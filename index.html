@@ -211,7 +211,8 @@
       <p class="section-body">Tell us about your business and we&#8217;ll send back a free audit within two business days.</p>
       <div class="contact-details">
         <div><span class="cd-label">Email</span><span class="cd-value">contact@dailyai.solutions</span></div>
-        <div><span class="cd-label">Web</span><span class="cd-value">dailyai.solutions</span></div>
+        <div><span class="cd-label">Phone</span><span class="cd-value">(929) 640-0419</span></div>
+        <div><span class="cd-label">Address</span><span class="cd-value">17810 Wexford Terrace, Apt 7X, Jamaica, NY 11432</span></div>
         <div><span class="cd-label">Service Area</span><span class="cd-value">New York City &amp; NY Metro</span></div>
       </div>
     </div>
@@ -220,10 +221,8 @@
         <div><label>Name</label><input name="name" required /></div>
         <div><label>Business</label><input name="business" required /></div>
       </div>
-      <div class="form-row">
-        <div><label>Email</label><input type="email" name="email" required /></div>
-        <div><label>Phone</label><input type="tel" name="phone" required /></div>
-      </div>
+      <label>Email</label>
+      <input type="email" name="email" required />
       <label>Service</label>
       <select name="service">
         <option>AI Lead Capture &amp; Booking</option>
@@ -258,7 +257,7 @@
     var data = new FormData(form);
     var payload = {
       name: (data.get('name') || '').trim(),
-      phone: (data.get('phone') || '').trim(),
+      phone: '',
       email: (data.get('email') || '').trim(),
       service: data.get('service') || '',
       message: (data.get('message') || '').trim()
@@ -278,7 +277,7 @@
         form.reset();
         btn.textContent = 'Sent ✓';
         statusEl.className = 'form-status is-success';
-        statusEl.textContent = 'Got it — we’ll text you shortly to confirm. Check your phone.';
+        statusEl.textContent = 'Got it — we’ll reply by email shortly. Prefer to text? Use the chat bubble in the corner.';
       })
       .catch(function () {
         btn.disabled = false;
@@ -297,11 +296,14 @@
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </div>
-    <div class="footer-copy">&#169; 2026 DAILY AI SOLUTIONS &#8212; NYC METRO</div>
+    <div class="footer-copy">&#169; 2026 DAILY AI SOLUTIONS &#8212; 17810 Wexford Terrace, Apt 7X, Jamaica, NY 11432 &#8212; (929) 640-0419</div>
   </div>
 </footer>
 
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a4add591951dd80c1d0fa54" data-source="WEB_USER"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
