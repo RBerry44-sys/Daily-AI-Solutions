@@ -201,4 +201,18 @@
       .then(function (res) {
         if (!res.ok) { throw new Error('Request failed'); }
         form.reset();
-        form.hidden = t
+        form.hidden = true;
+        statusEl.className = 'audit-status audit-status--success';
+        statusEl.textContent = 'Audit received! Your full scored report is being generated now — check your email in the next few minutes.';
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+        statusEl.className = 'audit-status audit-status--error';
+        statusEl.textContent = 'Something went wrong sending your request. Email us at contact@dailyai.solutions and we’ll run your audit manually.';
+      });
+  });
+})();
+</script>
+</body>
+</html>
