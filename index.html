@@ -259,4 +259,52 @@
     var payload = {
       name: (data.get('name') || '').trim(),
       phone: (data.get('phone') || '').trim(),
-      email: (data.g
+      email: (data.get('email') || '').trim(),
+      service: data.get('service') || '',
+      message: (data.get('message') || '').trim()
+    };
+    var business = (data.get('business') || '').trim();
+    if (business) {
+      payload.message = (payload.message ? payload.message + '\n\n' : '') + 'Business: ' + business;
+    }
+
+    fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        if (!res.ok) { throw new Error('Request failed'); }
+        form.reset();
+        btn.textContent = 'Sent ✓';
+        statusEl.className = 'form-status is-success';
+        statusEl.textContent = 'Got it — we’ll text you shortly to confirm. Check your phone.';
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+        statusEl.className = 'form-status is-error';
+        statusEl.textContent = 'Something went wrong. Email us directly at contact@dailyai.solutions and we’ll take it from there.';
+      });
+  });
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="brand-word footer-brand">DAILY AI<br><em>SOLUTIONS</em></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">&#169; 2026 DAILY AI SOLUTIONS &#8212; NYC METRO</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

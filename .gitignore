@@ -6,3 +6,6 @@ Handoff*.md
 Thumbs.db
 desktop.ini
 *.tmp
+
+.vercel
+.env*
