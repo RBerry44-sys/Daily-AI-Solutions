@@ -1,0 +1,12 @@
+<svg viewBox="0 0 350 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;display=swap');
+      .brand{ font-family:'Fraunces','Georgia',serif; font-weight:600; }
+      .ai{ font-family:'Fraunces','Georgia',serif; font-weight:600; font-style:italic; }
+    </style>
+  </defs>
+  <rect width="350" height="180" fill="#000000"/>
+  <text x="122" y="83" text-anchor="start" class="brand" font-size="21" fill="#F2EEE2" letter-spacing="0.3">DAILY <tspan class="ai" fill="#FF4C1F">AI</tspan></text>
+  <text x="175" y="112" text-anchor="middle" class="brand" font-size="21" fill="#F2EEE2" letter-spacing="0.3">SOLUTIONS</text>
+</svg>

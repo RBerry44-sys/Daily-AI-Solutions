@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  window.scrollTo(0, 0);
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily AI Solutions — AI Systems for NYC Small Business</title>
+<meta name="description" content="Daily AI Solutions builds done-for-you AI systems that capture every lead, grow every review, keep NYC small businesses compliant, and design distinctive AI-crafted websites. Built for HVAC, medical spas, and freelancer-hiring companies." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF4C1F'/%3E%3Cpath d='M50,25 C53,42 56,44 72,47 C56,53 53,56 50,72 C47,56 44,53 33,50 C44,47 47,42 50,25 Z' fill='%23F2EEE4'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-brand">DAILY <span>AI</span> SOLUTIONS</div>
+  <div class="loader-sub">INITIALIZING SYSTEM</div>
+  <div id="loader-bar"><div id="loader-bar-fill"></div></div>
+  <div id="loader-percent">0%</div>
+</div>
+
+<header class="site-header">
+  <nav>
+    <a href="#top" class="brand-mark">
+      <span class="brand-badge"><svg viewBox="0 0 34 34" width="30" height="30" aria-hidden="true"><defs><filter id="starEmboss" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0.45" dy="0.45" stdDeviation="0.3" flood-color="#000000" flood-opacity="0.45"/><feDropShadow dx="-0.4" dy="-0.4" stdDeviation="0.3" flood-color="#ffffff" flood-opacity="0.5"/></filter></defs><g transform="translate(17,17)" filter="url(#starEmboss)"><path d="M 0,-16 C 0.56,-1.88 1.88,-0.56 16,0 C 1.88,0.56 0.56,1.88 0,16 C -0.56,1.88 -1.88,0.56 -16,0 C -1.88,-0.56 -0.56,-1.88 0,-16 Z" fill="#F2EEE4"/></g></svg></span>
+      <span class="brand-word">DAILY <span class="brand-ai">AI</span><br><em>SOLUTIONS</em></span>
+    </a>
+    <div class="nav-links">
+      <a href="#leak">The Leak</a>
+      <a href="#services">Services</a>
+      <a href="#web-design">Design</a>
+      <a href="#how">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="audit.html" class="nav-cta">Free Audit &nbsp;→</a>
+  </nav>
+</header>
+
+<section class="hero-standalone" id="top">
+  <div class="stamp-badge" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <defs><path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"/></defs>
+      <text font-size="13" letter-spacing="2" fill="currentColor">
+        <textPath href="#circlePath">DAILY AI SOLUTIONS • NYC METRO • EST. 2026 •</textPath>
+      </text>
+    </svg>
+  </div>
+
+  <span class="section-label">001 / NEW YORK CITY AGENCY</span>
+  <h1 class="hero-heading">
+    <span class="line"><span class="word">SYSTEMS</span></span>
+    <span class="line"><span class="word">THAT SHOW</span></span>
+    <span class="line"><span class="word"><em>UP</em> EVERY</span></span>
+    <span class="line"><span class="word">DAY.</span></span>
+  </h1>
+  <p class="hero-tagline">AI automation built for HVAC crews, med spas, and every NYC<br class="br-desktop"> business that can&#8217;t afford a missed lead.</p>
+
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"><div class="scroll-line-fill"></div></div>
+  </div>
+</section>
+
+<div class="canvas-wrap">
+  <canvas id="canvas"></canvas>
+  <div class="canvas-caption">
+    <span class="cc-index" id="cc-index">01</span>
+    <span class="cc-label" id="cc-label">INBOUND LEAD RECEIVED</span>
+  </div>
+</div>
+
+<div id="dark-overlay"></div>
+
+<div class="marquee-wrap" id="marquee-1" data-scroll-speed="-22">
+  <div class="marquee-text">MISSED CALLS&nbsp;·&nbsp;LOST REVENUE&nbsp;·&nbsp;MISSED CALLS&nbsp;·&nbsp;LOST REVENUE&nbsp;·&nbsp;MISSED CALLS&nbsp;·&nbsp;LOST REVENUE&nbsp;·&nbsp;</div>
+</div>
+
+<div class="marquee-wrap" id="marquee-2" data-scroll-speed="16">
+  <div class="marquee-text">HVAC&nbsp;·&nbsp;MED&nbsp;SPA&nbsp;·&nbsp;COMPLIANCE&nbsp;·&nbsp;WEB&nbsp;DESIGN&nbsp;·&nbsp;HVAC&nbsp;·&nbsp;MED&nbsp;SPA&nbsp;·&nbsp;COMPLIANCE&nbsp;·&nbsp;WEB&nbsp;DESIGN&nbsp;·&nbsp;</div>
+</div>
+
+<main id="scroll-container">
+
+  <section class="scroll-section section-content align-left" id="leak"
+           data-enter="3" data-leave="13" data-animation="fade-up">
+    <div class="section-inner">
+      <span class="section-label">002 / THE PROBLEM</span>
+      <h2 class="section-heading">The Leak</h2>
+      <p class="section-body">Local service businesses lose 30&#8211;40% of inbound leads to slow or missed follow-up. A five-minute response makes a lead 21&#215; more likely to book than a thirty-minute one. Every unanswered call after 6 PM is revenue walking to a competitor.</p>
+      <p class="section-note">The average NYC contractor loses <strong>$50,000&#8211;$200,000 a year</strong> this way.</p>
+    </div>
+  </section>
+
+  <section class="scroll-section section-content align-right" id="services"
+           data-enter="15" data-leave="25" data-animation="slide-right">
+    <div class="section-inner">
+      <span class="section-label">003 / FLAGSHIP SERVICE</span>
+      <h2 class="section-heading">AI Lead Capture &amp; Booking</h2>
+      <p class="section-body">For HVAC, plumbing, electrical, and medical spa businesses. An AI voice or chat agent answers every inbound inquiry within sixty seconds and books it directly into your CRM &#8212; nights, weekends, holidays.</p>
+      <ul class="section-list">
+        <li>Instant response to web forms &amp; ad leads</li>
+        <li>Live calendar &amp; CRM sync</li>
+        <li>Works 24/7, no exceptions</li>
+      </ul>
+      <p class="section-price">$2,000 setup &nbsp;/&nbsp; $1,000 mo</p>
+    </div>
+  </section>
+
+  <section class="scroll-section section-content align-left"
+           data-enter="27" data-leave="37" data-animation="slide-left">
+    <div class="section-inner">
+      <span class="section-label">004 / GROWTH ADD-ON</span>
+      <h2 class="section-heading">Reputation &amp; Review Automation</h2>
+      <p class="section-body">Twenty-four hours after a job closes, an automated SMS survey goes out. Happy customers get a one-tap link to your Google Business Profile. Unhappy ones get flagged to you first &#8212; before they ever go public.</p>
+      <p class="section-price">$500 setup &nbsp;/&nbsp; $300 mo</p>
+    </div>
+  </section>
+
+  <section class="scroll-section section-content align-right" id="web-design"
+           data-enter="39" data-leave="49" data-animation="rotate-in">
+    <div class="section-inner">
+      <span class="section-label">005 / DESIGN STUDIO</span>
+      <h2 class="section-heading">Websites Built To Stand Out</h2>
+      <p class="section-body">Most small business sites look the same. We design and build distinctive, cinematic websites &#8212; the same scroll-driven craft behind this very page &#8212; tailored to your brand and live in days, not months.</p>
+      <ul class="section-list">
+        <li>Bespoke design, never a template</li>
+        <li>Scroll-driven motion &amp; animation</li>
+        <li>Live in days, not months</li>
+      </ul>
+      <p class="section-price">$2,500 setup &nbsp;/&nbsp; $200 mo (optional)</p>
+    </div>
+  </section>
+
+  <section class="scroll-section section-content align-left"
+           data-enter="51" data-leave="61" data-animation="scale-up">
+    <div class="section-inner">
+      <span class="section-label">006 / NYC DIFFERENTIATOR</span>
+      <h2 class="section-heading">NY Freelance Compliance</h2>
+      <p class="section-body">New York&#8217;s Freelance Isn&#8217;t Free Act requires a written contract for any freelance engagement of $800 or more. Miss it, and you&#8217;re exposed to statutory and double damages. We automate the contract, the signature, and the six-year record.</p>
+      <p class="section-price">$1,200+ setup &nbsp;/&nbsp; $400 mo</p>
+    </div>
+  </section>
+
+  <section class="scroll-section section-stats"
+           data-enter="63" data-leave="77" data-animation="stagger-up">
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-number" data-value="60" data-decimals="0">0</span><span class="stat-suffix">sec</span>
+        <span class="stat-label">Avg. lead response time</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" data-value="21" data-decimals="0">0</span><span class="stat-suffix">&#215;</span>
+        <span class="stat-label">More likely to book vs. 30 min</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" data-value="40" data-decimals="0">0</span><span class="stat-suffix">%</span>
+        <span class="stat-label">Leads lost to slow follow-up</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" data-value="65" data-decimals="0">0</span><span class="stat-suffix">%</span>
+        <span class="stat-label">Target margin after automation</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-section section-content align-left" id="how"
+           data-enter="79" data-leave="88" data-animation="clip-reveal">
+    <div class="section-inner">
+      <span class="section-label">007 / PROCESS</span>
+      <h2 class="section-heading">Audit. Build. Launch.</h2>
+      <ol class="process-list">
+        <li><span>01</span> Free response-time &amp; compliance audit</li>
+        <li><span>02</span> Custom workflow built on your CRM &amp; calendar</li>
+        <li><span>03</span> Guardrails, validation, human-in-the-loop review</li>
+        <li><span>04</span> Live in 48&#8211;72 hours, monitored monthly</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="scroll-section section-content align-right" id="pricing"
+           data-enter="90" data-leave="96" data-animation="rotate-in">
+    <div class="section-inner">
+      <span class="section-label">008 / WHY US</span>
+      <h2 class="section-heading">Built For Reliability, Not Demos</h2>
+      <p class="section-body">Deterministic guardrails, zero-temperature system prompts, and human escalation on anything uncertain. Local regulatory expertise, not a generic template. One operator, full ownership &#8212; no account managers, no hand-offs.</p>
+    </div>
+  </section>
+
+  <section class="scroll-section section-cta" data-enter="96" data-leave="100" data-animation="fade-up" data-persist="true">
+    <div class="section-inner">
+      <span class="section-label">009 / GET STARTED</span>
+      <h2 class="cta-heading">FIND YOUR<br><em>LEAK.</em></h2>
+      <p class="section-body">Free, no-obligation audit of your response time or compliance exposure. Takes less than five minutes to request.</p>
+      <a href="audit.html" class="cta-button">Request Your Free Audit &nbsp;→</a>
+    </div>
+  </section>
+
+</main>
+
+<section id="contact" class="contact-section">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <span class="section-label">010 / CONTACT</span>
+      <h2 class="section-heading">Let&#8217;s Talk.</h2>
+      <p class="section-body">Tell us about your business and we&#8217;ll send back a free audit within two business days.</p>
+      <div class="contact-details">
+        <div><span class="cd-label">Email</span><span class="cd-value">contact@dailyai.solutions</span></div>
+        <div><span class="cd-label">Web</span><span class="cd-value">dailyai.solutions</span></div>
+        <div><span class="cd-label">Service Area</span><span class="cd-value">New York City &amp; NY Metro</span></div>
+      </div>
+    </div>
+    <form class="contact-form" action="mailto:contact@dailyai.solutions" method="post" enctype="text/plain">
+      <div class="form-row">
+        <div><label>Name</label><input name="Name" required /></div>
+        <div><label>Business</label><input name="Business" required /></div>
+      </div>
+      <div class="form-row">
+        <div><label>Email</label><input type="email" name="Email" required /></div>
+        <div><label>Phone</label><input type="tel" name="Phone" /></div>
+      </div>
+      <label>Service</label>
+      <select name="Service">
+        <option>AI Lead Capture &amp; Booking</option>
+        <option>Reputation &amp; Review Automation</option>
+        <option>Website Design &amp; Creation</option>
+        <option>NY Freelance Compliance Automation</option>
+        <option>Not sure yet</option>
+      </select>
+      <label>What&#8217;s slowing you down?</label>
+      <textarea name="Message"></textarea>
+      <button type="submit">Request Free Audit &nbsp;→</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="brand-word footer-brand">DAILY AI<br><em>SOLUTIONS</em></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">&#169; 2026 DAILY AI SOLUTIONS &#8212; NYC METRO</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
