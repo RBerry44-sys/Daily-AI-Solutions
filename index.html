@@ -215,78 +215,12 @@
         <div><span class="cd-label">Service Area</span><span class="cd-value">New York City &amp; NY Metro</span></div>
       </div>
     </div>
-    <form class="contact-form" id="contactForm">
-      <div class="form-row">
-        <div><label>Name</label><input name="name" required /></div>
-        <div><label>Business</label><input name="business" required /></div>
-      </div>
-      <label>Email</label>
-      <input type="email" name="email" required />
-      <label>Service</label>
-      <select name="service">
-        <option>AI Lead Capture &amp; Booking</option>
-        <option>Reputation &amp; Review Automation</option>
-        <option>Website Design &amp; Creation</option>
-        <option>NY Freelance Compliance Automation</option>
-        <option>Not sure yet</option>
-      </select>
-      <label>What&#8217;s slowing you down?</label>
-      <textarea name="message"></textarea>
-      <button type="submit">Send &nbsp;→</button>
-      <p class="form-status" id="contactStatus"></p>
-    </form>
+    <div class="contact-cta">
+      <p class="section-body">The fastest way to start is the free audit — two minutes to fill out, and a real scored report lands in your inbox. Prefer to talk first? Use the chat bubble in the corner or email us directly.</p>
+      <a href="audit.html" class="cta-button">Request Your Free Audit &nbsp;→</a>
+    </div>
   </div>
 </section>
-
-<script>
-(function () {
-  var LEAD_WEBHOOK_URL = 'https://n8n.agenticnodes.cloud/webhook/daily-ai/lead-capture';
-  var form = document.getElementById('contactForm');
-  var statusEl = document.getElementById('contactStatus');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var btn = form.querySelector('button[type="submit"]');
-    var originalLabel = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    statusEl.className = 'form-status';
-    statusEl.textContent = '';
-
-    var data = new FormData(form);
-    var payload = {
-      name: (data.get('name') || '').trim(),
-      phone: '',
-      email: (data.get('email') || '').trim(),
-      service: data.get('service') || '',
-      message: (data.get('message') || '').trim()
-    };
-    var business = (data.get('business') || '').trim();
-    if (business) {
-      payload.message = (payload.message ? payload.message + '\n\n' : '') + 'Business: ' + business;
-    }
-
-    fetch(LEAD_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-      .then(function (res) {
-        if (!res.ok) { throw new Error('Request failed'); }
-        form.reset();
-        btn.textContent = 'Sent ✓';
-        statusEl.className = 'form-status is-success';
-        statusEl.textContent = 'Got it — we’ll reply by email shortly. Prefer to text? Use the chat bubble in the corner.';
-      })
-      .catch(function () {
-        btn.disabled = false;
-        btn.textContent = originalLabel;
-        statusEl.className = 'form-status is-error';
-        statusEl.textContent = 'Something went wrong. Email us directly at contact@dailyai.solutions and we’ll take it from there.';
-      });
-  });
-})();
-</script>
 
 <footer class="site-footer">
   <div class="footer-inner">

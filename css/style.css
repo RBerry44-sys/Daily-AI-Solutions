@@ -303,10 +303,8 @@ img{max-width:100%;display:block;}
   padding:15px 28px;border-radius:999px;transition:background .2s ease, transform .2s ease;
 }
 .contact-form button:hover{background:var(--bg-accent);transform:translateY(-2px);}
-.form-status{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.03em;margin-top:6px;min-height:18px;}
-.form-status.is-success{color:#2E7D4F;}
-.form-status.is-error{color:#B0242E;}
-.contact-form button:disabled{opacity:0.65;cursor:default;transform:none;}
+.contact-cta{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:28px;}
+.contact-cta .section-body{color:var(--text-on-light-mute);max-width:46ch;margin:0;}
 @media(max-width:860px){ .contact-wrap{grid-template-columns:1fr;gap:50px;} }
 
 /* ============ FOOTER ============ */
