@@ -205,7 +205,7 @@
         form.reset();
         form.hidden = true;
         statusEl.className = 'audit-status audit-status--success';
-        statusEl.textContent = 'Audit received! Your full scored report is being generated now — check your email in the next few minutes.';
+        statusEl.innerHTML = 'Audit received! Your full scored report is being generated now — check your email in the next few minutes. Want to talk it through? <a href="https://links.launchcart.com/widget/bookings/15-minute-ai-systems-walkthrough" style="color:inherit;text-decoration:underline;">Book a free 15-minute walkthrough&nbsp;→</a>';
       })
       .catch(function () {
         btn.disabled = false;

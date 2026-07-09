@@ -305,6 +305,8 @@ img{max-width:100%;display:block;}
 .contact-form button:hover{background:var(--bg-accent);transform:translateY(-2px);}
 .contact-cta{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:28px;}
 .contact-cta .section-body{color:var(--text-on-light-mute);max-width:46ch;margin:0;}
+.contact-book-link{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-on-light);text-decoration:underline;text-underline-offset:4px;margin-top:-10px;}
+.contact-book-link:hover{color:var(--bg-accent);}
 @media(max-width:860px){ .contact-wrap{grid-template-columns:1fr;gap:50px;} }
 
 /* ============ FOOTER ============ */
