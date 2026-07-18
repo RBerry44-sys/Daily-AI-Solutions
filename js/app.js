@@ -234,7 +234,7 @@ loopCanvas();
 /* ============ ENTRANCE ANIMATIONS ============ */
 function getChildren(section) {
   return section.querySelectorAll(
-    ".section-label, .section-heading, .section-body, .section-note, .section-list li, .process-list li, .section-price, .cta-heading, .cta-button, .stat, .sample-strip"
+    ".section-label, .section-heading, .section-body, .section-note, .section-list li, .process-list li, .section-price, .cta-heading, .cta-button, .stat, .sample-strip, .studio-cta"
   );
 }
 
@@ -417,9 +417,9 @@ const STUDIO = {
   wipeIn: [54, 56.5],
   wipeOut: [85.5, 88],
   chapters: [
-    { dir: "media/frames-listing", count: 50, label: "LISTINGLIFT — LISTING FILMS", range: [56.5, 71], vertical: false, anchor: 0.66 },
-    { dir: "media/frames-food",    count: 50, label: "PLATESTORY — FOOD REELS",    range: [71, 79],   vertical: true,  anchor: 0.32 },
-    { dir: "media/frames-launch",  count: 50, label: "LAUNCHFRAME — LAUNCH KITS",  range: [79, 88],   vertical: false, anchor: 0.66 },
+    { dir: "media/frames-listing", count: 76, label: "LISTINGLIFT — LISTING FILMS", range: [56.5, 71], vertical: false, anchor: 0.66 },
+    { dir: "media/frames-food",    count: 76, label: "PLATESTORY — FOOD REELS",    range: [71, 79],   vertical: true,  anchor: 0.32 },
+    { dir: "media/frames-launch",  count: 76, label: "LAUNCHFRAME — LAUNCH KITS",  range: [79, 88],   vertical: false, anchor: 0.66 },
   ],
   frames: [[], [], []],
   loaded: false,
@@ -439,6 +439,7 @@ function resizeStudioCanvas() {
   studioCanvas.style.width = window.innerWidth + "px";
   studioCanvas.style.height = window.innerHeight + "px";
   sctx.setTransform(d, 0, 0, d, 0, 0);
+  if (window.__studioReady) studioNeedsDraw = true;
 }
 resizeStudioCanvas();
 window.addEventListener("resize", resizeStudioCanvas);
@@ -449,8 +450,11 @@ function loadStudioFrames() {
     for (let i = 1; i <= ch.count; i++) {
       pending++;
       const img = new Image();
+      img.decoding = "async";
       img.src = `${ch.dir}/frame_${String(i).padStart(3, "0")}.webp`;
       img.onload = img.onerror = () => {
+        /* pre-decode so first paint of each frame never janks the scrub */
+        if (img.decode) img.decode().catch(() => {});
         if (--pending === 0) STUDIO.loaded = true;
       };
       STUDIO.frames[ci][i - 1] = img;
@@ -474,48 +478,53 @@ function studioWipe(p100) {
   return 0;
 }
 
+/* ---- target state (set by scroll) + damped state (advanced by rAF) ---- */
+const studioTarget = { wipe: 0, closing: false, ci: 0, frame: 0, active: false };
+const studioState = { wipe: 0, frame: 0, ci: 0, drift: 0, targetDrift: 0 };
+
 function renderStudio(p100) {
   if (!studioWrap) return;
   const wipe = studioWipe(p100);
-  if (wipe <= 0) {
-    studioWrap.style.clipPath = "inset(0 100% 0 0)";
+  studioTarget.wipe = wipe;
+  studioTarget.closing = p100 > STUDIO.wipeOut[0];
+  studioTarget.active = wipe > 0;
+  if (!studioTarget.active) {
     studioCaption.classList.remove("visible");
     return;
   }
-  /* wipe opens from the left as the studio chapter begins,
-     closes to the right as it ends */
-  const closing = p100 > STUDIO.wipeOut[0];
-  studioWrap.style.clipPath = closing
-    ? `inset(0 0 0 ${(1 - wipe) * 100}%)`
-    : `inset(0 ${(1 - wipe) * 100}% 0 0)`;
   studioCaption.classList.toggle("visible", wipe > 0.85);
 
-  /* which chapter are we in? */
+  /* which chapter + fractional frame are we targeting? */
   let ci = 0, localT = 0;
   for (let i = 0; i < STUDIO.chapters.length; i++) {
     const [ra, rb] = STUDIO.chapters[i].range;
     if (p100 >= ra && p100 <= rb) { ci = i; localT = (p100 - ra) / (rb - ra); break; }
     if (p100 > rb) { ci = i; localT = 1; }
   }
-  const ch = STUDIO.chapters[ci];
+  studioTarget.ci = ci;
+  studioTarget.frame = localT * (STUDIO.chapters[ci].count - 1);
+  studioState.targetDrift = (localT - 0.5) * 26; /* gentle parallax drift */
 
   /* caption */
   const intro = p100 < 62;
   const wantIdx = intro ? "00" : String(ci + 1).padStart(2, "0");
-  const wantLabel = intro ? "THE CREATIVE STUDIO — MADE WITH AI, DISCLOSED AS AI" : ch.label;
+  const wantLabel = intro ? "THE CREATIVE STUDIO — MADE WITH AI, DISCLOSED AS AI" : STUDIO.chapters[ci].label;
   if (scLabel.textContent !== wantLabel) {
     scIndex.textContent = wantIdx;
     scLabel.textContent = wantLabel;
   }
+}
 
-  /* draw frame */
+/* ---- persistent damped render loop: frames glide instead of stepping ---- */
+const lerp = (a, b, t) => a + (b - a) * t;
+
+function drawStudioFrame() {
   const w = window.innerWidth, h = window.innerHeight;
   sctx.clearRect(0, 0, w, h);
-  sctx.fillStyle = "#0F1210";
-  sctx.fillRect(0, 0, w, h);
 
-  const frameIdx = Math.min(ch.count - 1, Math.floor(localT * (ch.count - 1)));
-  const img = STUDIO.frames[ci] && STUDIO.frames[ci][frameIdx];
+  const ch = STUDIO.chapters[studioState.ci];
+  const frameIdx = Math.max(0, Math.min(ch.count - 1, Math.round(studioState.frame)));
+  const img = STUDIO.frames[studioState.ci] && STUDIO.frames[studioState.ci][frameIdx];
   if (!img || !img.complete || !img.naturalWidth) return;
 
   const mobile = w < 860;
@@ -524,32 +533,110 @@ function renderStudio(p100) {
   if (ch.vertical) {
     maxH = (mobile ? 0.7 : 0.85) * h;
     maxW = (mobile ? 0.8 : 0.40) * w;
-    cx = mobile ? 0.5 * w : ch.anchor * w;
   } else {
     maxH = (mobile ? 0.5 : 0.78) * h;
     maxW = (mobile ? 0.92 : 0.52) * w;
-    cx = mobile ? 0.5 * w : ch.anchor * w;
   }
+  cx = mobile ? 0.5 * w : ch.anchor * w;
   const scale = Math.min(maxW / iw, maxH / ih);
   const dw = iw * scale, dh = ih * scale;
   const dx = cx - dw / 2;
-  const dy = (mobile ? 0.38 * h : 0.5 * h) - dh / 2;
+  const dy = (mobile ? 0.38 * h : 0.5 * h) - dh / 2 + studioState.drift;
+  const radius = 14;
 
   sctx.save();
+  sctx.imageSmoothingEnabled = true;
+  sctx.imageSmoothingQuality = "high";
+
+  /* soft plate shadow */
+  sctx.save();
+  sctx.shadowColor = "rgba(0,0,0,0.55)";
+  sctx.shadowBlur = 60;
+  sctx.shadowOffsetY = 24;
+  sctx.fillStyle = "#0F1210";
+  if (sctx.roundRect) {
+    sctx.beginPath();
+    sctx.roundRect(dx, dy, dw, dh, radius);
+    sctx.fill();
+  } else {
+    sctx.fillRect(dx, dy, dw, dh);
+  }
+  sctx.restore();
+
+  /* rounded-corner clipped media */
   if (mobile) sctx.globalAlpha = 0.55;
-  sctx.drawImage(img, dx, dy, dw, dh);
-  sctx.globalAlpha = 1;
-  /* hairline frame */
-  sctx.strokeStyle = "rgba(242,238,226,0.18)";
+  if (sctx.roundRect) {
+    sctx.beginPath();
+    sctx.roundRect(dx, dy, dw, dh, radius);
+    sctx.clip();
+    sctx.drawImage(img, dx, dy, dw, dh);
+  } else {
+    sctx.drawImage(img, dx, dy, dw, dh);
+  }
+  sctx.restore();
+
+  /* hairline + film-style caption below the plate */
+  sctx.save();
+  sctx.strokeStyle = "rgba(242,238,226,0.16)";
   sctx.lineWidth = 1;
-  sctx.strokeRect(dx + 0.5, dy + 0.5, dw - 1, dh - 1);
-  /* film-style corner index */
+  if (sctx.roundRect) {
+    sctx.beginPath();
+    sctx.roundRect(dx + 0.5, dy + 0.5, dw - 1, dh - 1, radius);
+    sctx.stroke();
+  } else {
+    sctx.strokeRect(dx + 0.5, dy + 0.5, dw - 1, dh - 1);
+  }
   sctx.font = "600 10px 'IBM Plex Mono', monospace";
   sctx.fillStyle = "rgba(242,238,226,0.55)";
   sctx.textAlign = "left";
-  sctx.fillText(`FRAME ${String(frameIdx + 1).padStart(3, "0")} / 050 — AI GENERATED SAMPLE`, dx, dy + dh + 18);
+  sctx.fillText(
+    `FRAME ${String(frameIdx + 1).padStart(3, "0")} / ${String(ch.count).padStart(3, "0")} — AI GENERATED SAMPLE`,
+    dx, dy + dh + 20
+  );
+  sctx.fillStyle = "rgba(255,76,31,0.9)";
+  sctx.fillText("●", dx + dw - 10, dy + dh + 20);
   sctx.restore();
 }
+
+let studioNeedsDraw = true;
+function studioLoop() {
+  requestAnimationFrame(studioLoop);
+  if (!studioWrap) return;
+
+  /* damp the wipe */
+  const prevWipe = studioState.wipe;
+  studioState.wipe = lerp(studioState.wipe, studioTarget.wipe, 0.16);
+  if (Math.abs(studioState.wipe - studioTarget.wipe) < 0.001) studioState.wipe = studioTarget.wipe;
+  if (studioState.wipe !== prevWipe || studioTarget.active) {
+    const wv = Math.max(0, Math.min(1, studioState.wipe));
+    /* smoothstep eased wipe edge */
+    const e = wv * wv * (3 - 2 * wv);
+    studioWrap.style.clipPath = studioTarget.closing
+      ? `inset(0 0 0 ${(1 - e) * 100}%)`
+      : `inset(0 ${(1 - e) * 100}% 0 0)`;
+  }
+  if (studioState.wipe <= 0.001 && !studioTarget.active) return;
+
+  /* chapter switch: jump-cut (film language), then damp within the chapter */
+  if (studioState.ci !== studioTarget.ci) {
+    studioState.ci = studioTarget.ci;
+    studioState.frame = studioTarget.frame;
+    studioNeedsDraw = true;
+  }
+
+  /* damp the frame position + parallax drift */
+  const prevFrame = studioState.frame;
+  const prevDrift = studioState.drift;
+  studioState.frame = lerp(studioState.frame, studioTarget.frame, 0.14);
+  studioState.drift = lerp(studioState.drift, studioState.targetDrift, 0.08);
+  if (Math.abs(studioState.frame - prevFrame) > 0.01 ||
+      Math.abs(studioState.drift - prevDrift) > 0.05 ||
+      studioNeedsDraw) {
+    studioNeedsDraw = false;
+    drawStudioFrame();
+  }
+}
+studioLoop();
 
 window.__studioReady = true;
 renderScene(masterST);
