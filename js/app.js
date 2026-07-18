@@ -234,7 +234,7 @@ loopCanvas();
 /* ============ ENTRANCE ANIMATIONS ============ */
 function getChildren(section) {
   return section.querySelectorAll(
-    ".section-label, .section-heading, .section-body, .section-note, .section-list li, .process-list li, .section-price, .cta-heading, .cta-button, .stat"
+    ".section-label, .section-heading, .section-body, .section-note, .section-list li, .process-list li, .section-price, .cta-heading, .cta-button, .stat, .sample-strip"
   );
 }
 
@@ -338,14 +338,18 @@ function renderScene(self) {
       const speed = parseFloat(m.dataset.scrollSpeed) || -20;
       const id = m.id;
       let range;
-      if (id === "marquee-1") range = [9, 21];
-      else range = [60, 78];
+      if (id === "marquee-1") range = [10, 20];
+      else if (id === "marquee-2") range = [44, 54];
+      else range = [57, 85];
       const op = rangeOpacity(p100, range[0], range[1], 4, 0);
       m.style.opacity = op * 0.9;
       const text = m.querySelector(".marquee-text");
       const localT = Math.max(0, Math.min(1, (p100 - range[0]) / (range[1] - range[0])));
       text.style.transform = `translateX(${speed * localT}%)`;
     });
+
+    /* creative studio media layer (module defined at end of file) */
+    if (window.__studioReady) renderStudio(p100);
 
     /* section entrance/exit */
     sections.forEach((sec) => {
@@ -404,3 +408,148 @@ window.addEventListener("load", () => {
   ScrollTrigger.refresh();
   renderScene(masterST);
 });
+
+/* ============ CREATIVE STUDIO: SCROLL-SCRUBBED VIDEO FRAMES ============ */
+/* Three Higgsfield-produced sample films, extracted to webp frame
+   sequences and scrubbed by scroll position (video-to-website pattern). */
+
+const STUDIO = {
+  wipeIn: [54, 56.5],
+  wipeOut: [85.5, 88],
+  chapters: [
+    { dir: "media/frames-listing", count: 50, label: "LISTINGLIFT — LISTING FILMS", range: [56.5, 71], vertical: false, anchor: 0.66 },
+    { dir: "media/frames-food",    count: 50, label: "PLATESTORY — FOOD REELS",    range: [71, 79],   vertical: true,  anchor: 0.32 },
+    { dir: "media/frames-launch",  count: 50, label: "LAUNCHFRAME — LAUNCH KITS",  range: [79, 88],   vertical: false, anchor: 0.66 },
+  ],
+  frames: [[], [], []],
+  loaded: false,
+};
+
+const studioWrap = document.getElementById("studio-wrap");
+const studioCanvas = document.getElementById("studio-canvas");
+const sctx = studioCanvas.getContext("2d");
+const scIndex = document.getElementById("sc-index");
+const scLabel = document.getElementById("sc-label");
+const studioCaption = document.querySelector(".studio-caption");
+
+function resizeStudioCanvas() {
+  const d = Math.min(window.devicePixelRatio || 1, 2);
+  studioCanvas.width = window.innerWidth * d;
+  studioCanvas.height = window.innerHeight * d;
+  studioCanvas.style.width = window.innerWidth + "px";
+  studioCanvas.style.height = window.innerHeight + "px";
+  sctx.setTransform(d, 0, 0, d, 0, 0);
+}
+resizeStudioCanvas();
+window.addEventListener("resize", resizeStudioCanvas);
+
+function loadStudioFrames() {
+  let pending = 0;
+  STUDIO.chapters.forEach((ch, ci) => {
+    for (let i = 1; i <= ch.count; i++) {
+      pending++;
+      const img = new Image();
+      img.src = `${ch.dir}/frame_${String(i).padStart(3, "0")}.webp`;
+      img.onload = img.onerror = () => {
+        if (--pending === 0) STUDIO.loaded = true;
+      };
+      STUDIO.frames[ci][i - 1] = img;
+    }
+  });
+}
+/* defer frame loading so the hero + flow diagram stay snappy */
+if ("requestIdleCallback" in window) {
+  requestIdleCallback(loadStudioFrames, { timeout: 4000 });
+} else {
+  setTimeout(loadStudioFrames, 2500);
+}
+
+function studioWipe(p100) {
+  const [a, b] = STUDIO.wipeIn;
+  const [c, d] = STUDIO.wipeOut;
+  if (p100 < a) return 0;
+  if (p100 < b) return (p100 - a) / (b - a);
+  if (p100 <= c) return 1;
+  if (p100 <= d) return 1 - (p100 - c) / (d - c);
+  return 0;
+}
+
+function renderStudio(p100) {
+  if (!studioWrap) return;
+  const wipe = studioWipe(p100);
+  if (wipe <= 0) {
+    studioWrap.style.clipPath = "inset(0 100% 0 0)";
+    studioCaption.classList.remove("visible");
+    return;
+  }
+  /* wipe opens from the left as the studio chapter begins,
+     closes to the right as it ends */
+  const closing = p100 > STUDIO.wipeOut[0];
+  studioWrap.style.clipPath = closing
+    ? `inset(0 0 0 ${(1 - wipe) * 100}%)`
+    : `inset(0 ${(1 - wipe) * 100}% 0 0)`;
+  studioCaption.classList.toggle("visible", wipe > 0.85);
+
+  /* which chapter are we in? */
+  let ci = 0, localT = 0;
+  for (let i = 0; i < STUDIO.chapters.length; i++) {
+    const [ra, rb] = STUDIO.chapters[i].range;
+    if (p100 >= ra && p100 <= rb) { ci = i; localT = (p100 - ra) / (rb - ra); break; }
+    if (p100 > rb) { ci = i; localT = 1; }
+  }
+  const ch = STUDIO.chapters[ci];
+
+  /* caption */
+  const intro = p100 < 62;
+  const wantIdx = intro ? "00" : String(ci + 1).padStart(2, "0");
+  const wantLabel = intro ? "THE CREATIVE STUDIO — MADE WITH AI, DISCLOSED AS AI" : ch.label;
+  if (scLabel.textContent !== wantLabel) {
+    scIndex.textContent = wantIdx;
+    scLabel.textContent = wantLabel;
+  }
+
+  /* draw frame */
+  const w = window.innerWidth, h = window.innerHeight;
+  sctx.clearRect(0, 0, w, h);
+  sctx.fillStyle = "#0F1210";
+  sctx.fillRect(0, 0, w, h);
+
+  const frameIdx = Math.min(ch.count - 1, Math.floor(localT * (ch.count - 1)));
+  const img = STUDIO.frames[ci] && STUDIO.frames[ci][frameIdx];
+  if (!img || !img.complete || !img.naturalWidth) return;
+
+  const mobile = w < 860;
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  let maxW, maxH, cx;
+  if (ch.vertical) {
+    maxH = (mobile ? 0.7 : 0.85) * h;
+    maxW = (mobile ? 0.8 : 0.40) * w;
+    cx = mobile ? 0.5 * w : ch.anchor * w;
+  } else {
+    maxH = (mobile ? 0.5 : 0.78) * h;
+    maxW = (mobile ? 0.92 : 0.52) * w;
+    cx = mobile ? 0.5 * w : ch.anchor * w;
+  }
+  const scale = Math.min(maxW / iw, maxH / ih);
+  const dw = iw * scale, dh = ih * scale;
+  const dx = cx - dw / 2;
+  const dy = (mobile ? 0.38 * h : 0.5 * h) - dh / 2;
+
+  sctx.save();
+  if (mobile) sctx.globalAlpha = 0.55;
+  sctx.drawImage(img, dx, dy, dw, dh);
+  sctx.globalAlpha = 1;
+  /* hairline frame */
+  sctx.strokeStyle = "rgba(242,238,226,0.18)";
+  sctx.lineWidth = 1;
+  sctx.strokeRect(dx + 0.5, dy + 0.5, dw - 1, dh - 1);
+  /* film-style corner index */
+  sctx.font = "600 10px 'IBM Plex Mono', monospace";
+  sctx.fillStyle = "rgba(242,238,226,0.55)";
+  sctx.textAlign = "left";
+  sctx.fillText(`FRAME ${String(frameIdx + 1).padStart(3, "0")} / 050 — AI GENERATED SAMPLE`, dx, dy + dh + 18);
+  sctx.restore();
+}
+
+window.__studioReady = true;
+renderScene(masterST);
