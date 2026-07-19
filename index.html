@@ -7,327 +7,334 @@
   window.scrollTo(0, 0);
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Daily AI Solutions — AI Systems &amp; Creative Studio for Local Business</title>
-<meta name="description" content="Daily AI Solutions builds done-for-you AI systems that capture every lead, book it in 60 seconds, and grow every review — plus an AI creative studio producing cinematic listing films for realtors, food reels for restaurants, and launch kits for product creators." />
+<title>Daily AI Solutions — AI Systems &amp; Creative Studio, NYC</title>
+<meta name="description" content="A done-for-you AI agency for NYC-metro operators. Systems that answer every lead in 60 seconds — and an AI creative studio producing listing films, food reels, and launch kits without a camera crew." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF4C1F'/%3E%3Cpath d='M50,25 C53,42 56,44 72,47 C56,53 53,56 50,72 C47,56 44,53 33,50 C44,47 47,42 50,25 Z' fill='%23F2EEE4'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,700;1,9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body data-zone="cream">
 
+<!-- LOADER -->
 <div id="loader">
+  <svg class="loader-star" viewBox="0 0 34 34" width="44" height="44" aria-hidden="true">
+    <g transform="translate(17,17)">
+      <path d="M 0,-16 C 0.56,-1.88 1.88,-0.56 16,0 C 1.88,0.56 0.56,1.88 0,16 C -0.56,1.88 -1.88,0.56 -16,0 C -1.88,-0.56 -0.56,-1.88 0,-16 Z" fill="currentColor"/>
+    </g>
+  </svg>
   <div class="loader-brand">DAILY <span>AI</span> SOLUTIONS</div>
-  <div class="loader-sub">INITIALIZING SYSTEM</div>
-  <div id="loader-bar"><div id="loader-bar-fill"></div></div>
-  <div id="loader-percent">0%</div>
+  <div id="loader-percent">00</div>
 </div>
 
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- GRAIN -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- HEADER -->
 <header class="site-header">
   <nav>
-    <a href="#top" class="brand-mark">
-      <span class="brand-badge"><svg viewBox="0 0 34 34" width="30" height="30" aria-hidden="true"><defs><filter id="starEmboss" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0.45" dy="0.45" stdDeviation="0.3" flood-color="#000000" flood-opacity="0.45"/><feDropShadow dx="-0.4" dy="-0.4" stdDeviation="0.3" flood-color="#ffffff" flood-opacity="0.5"/></filter></defs><g transform="translate(17,17)" filter="url(#starEmboss)"><path d="M 0,-16 C 0.56,-1.88 1.88,-0.56 16,0 C 1.88,0.56 0.56,1.88 0,16 C -0.56,1.88 -1.88,0.56 -16,0 C -1.88,-0.56 -0.56,-1.88 0,-16 Z" fill="#F2EEE4"/></g></svg></span>
-      <span class="brand-word">DAILY <span class="brand-ai">AI</span><br><em>SOLUTIONS</em></span>
+    <a href="#top" class="brand-mark" data-cursor="link">
+      <span class="brand-badge"><svg viewBox="0 0 34 34" width="28" height="28" aria-hidden="true"><g transform="translate(17,17)"><path d="M 0,-16 C 0.56,-1.88 1.88,-0.56 16,0 C 1.88,0.56 0.56,1.88 0,16 C -0.56,1.88 -1.88,0.56 -16,0 C -1.88,-0.56 -0.56,-1.88 0,-16 Z" fill="currentColor"/></g></svg></span>
+      <span class="brand-word">DAILY <em>AI</em> SOLUTIONS</span>
     </a>
     <div class="nav-links">
-      <a href="#leak">The Leak</a>
-      <a href="#services">Services</a>
-      <a href="#web-design">Design</a>
-      <a href="#studio">Studio</a>
-      <a href="#how">Process</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
+      <a href="#systems" data-cursor="link">Systems</a>
+      <a href="#work" data-cursor="link">The Work</a>
+      <a href="#studio" data-cursor="link">Studio</a>
+      <a href="#pricing" data-cursor="link">Pricing</a>
+      <a href="#contact" data-cursor="link">Contact</a>
     </div>
-    <a href="audit.html" class="nav-cta">Free Audit &nbsp;→</a>
+    <a href="audit.html" class="nav-cta" data-cursor="link">Free Audit&nbsp;&#8594;</a>
   </nav>
 </header>
 
-<section class="hero-standalone" id="top">
-  <div class="stamp-badge" aria-hidden="true">
-    <svg viewBox="0 0 200 200">
-      <defs><path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"/></defs>
-      <text font-size="13" letter-spacing="2" fill="currentColor">
-        <textPath href="#circlePath">DAILY AI SOLUTIONS • NYC METRO • EST. 2026 •</textPath>
-      </text>
-    </svg>
-  </div>
+<main id="top">
 
-  <span class="section-label">001 / NEW YORK CITY AGENCY</span>
-  <h1 class="hero-heading">
-    <span class="line"><span class="word">SYSTEMS</span></span>
-    <span class="line"><span class="word">THAT SHOW</span></span>
-    <span class="line"><span class="word"><em>UP</em> EVERY</span></span>
-    <span class="line"><span class="word">DAY.</span></span>
-  </h1>
-  <p class="hero-tagline">AI automation built for med spas, HVAC crews, and roofers<br class="br-desktop"> who can&#8217;t afford a single missed lead.</p>
+  <!-- ============ HERO ============ -->
+  <section class="hero" data-zone="cream">
+    <div class="stamp" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs><path id="stampPath" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/></defs>
+        <text font-size="12.5" letter-spacing="2.5"><textPath href="#stampPath">DAILY AI SOLUTIONS • NYC METRO • SYSTEMS + STUDIO • EST. 2026 •</textPath></text>
+      </svg>
+      <svg class="stamp-star" viewBox="0 0 34 34" width="26" height="26"><g transform="translate(17,17)"><path d="M 0,-16 C 0.56,-1.88 1.88,-0.56 16,0 C 1.88,0.56 0.56,1.88 0,16 C -0.56,1.88 -1.88,0.56 -16,0 C -1.88,-0.56 -0.56,-1.88 0,-16 Z" fill="currentColor"/></g></svg>
+    </div>
 
-  <div class="scroll-indicator">
-    <span>SCROLL</span>
-    <div class="scroll-line"><div class="scroll-line-fill"></div></div>
-  </div>
-</section>
+    <p class="kicker"><span>001</span> A NEW YORK CITY AGENCY — HVAC · MED SPAS · ROOFING · HOSPITALITY · REAL ESTATE</p>
 
-<div class="canvas-wrap">
-  <canvas id="canvas"></canvas>
-  <div class="canvas-caption">
-    <span class="cc-index" id="cc-index">01</span>
-    <span class="cc-label" id="cc-label">INBOUND LEAD RECEIVED</span>
-  </div>
-</div>
+    <h1 class="hero-title" aria-label="Systems that show up every day.">
+      <span class="ht-line"><span class="ht-word">SYSTEMS</span></span>
+      <span class="ht-line"><span class="ht-word">THAT SHOW</span></span>
+      <span class="ht-line"><span class="ht-word"><em>UP</em> EVERY</span></span>
+      <span class="ht-line"><span class="ht-word">DAY<em>.</em></span></span>
+    </h1>
 
-<div class="studio-wrap" id="studio-wrap">
-  <canvas id="studio-canvas"></canvas>
-  <div class="studio-caption">
-    <span class="sc-index" id="sc-index">A</span>
-    <span class="sc-label" id="sc-label">THE CREATIVE STUDIO</span>
-  </div>
-</div>
+    <div class="hero-foot">
+      <p class="hero-tagline">AI automation and an AI creative studio for operators<br>who can&#8217;t afford a single missed lead.</p>
+      <div class="scroll-cue" aria-hidden="true"><span>SCROLL</span><i></i></div>
+    </div>
 
-<div id="dark-overlay"></div>
-
-<div class="marquee-wrap" id="marquee-1" data-scroll-speed="-22">
-  <div class="marquee-text">MISSED CALLS&nbsp;·&nbsp;LOST REVENUE&nbsp;·&nbsp;MISSED CALLS&nbsp;·&nbsp;LOST REVENUE&nbsp;·&nbsp;MISSED CALLS&nbsp;·&nbsp;LOST REVENUE&nbsp;·&nbsp;</div>
-</div>
-
-<div class="marquee-wrap" id="marquee-2" data-scroll-speed="16">
-  <div class="marquee-text">MED&nbsp;SPA&nbsp;·&nbsp;HVAC&nbsp;·&nbsp;ROOFING&nbsp;·&nbsp;RESTORATION&nbsp;·&nbsp;MED&nbsp;SPA&nbsp;·&nbsp;HVAC&nbsp;·&nbsp;ROOFING&nbsp;·&nbsp;RESTORATION&nbsp;·&nbsp;</div>
-</div>
-
-<div class="marquee-wrap marquee-studio" id="marquee-3" data-scroll-speed="-18">
-  <div class="marquee-text">LISTING&nbsp;FILMS&nbsp;·&nbsp;FOOD&nbsp;REELS&nbsp;·&nbsp;LAUNCH&nbsp;KITS&nbsp;·&nbsp;LISTING&nbsp;FILMS&nbsp;·&nbsp;FOOD&nbsp;REELS&nbsp;·&nbsp;LAUNCH&nbsp;KITS&nbsp;·&nbsp;</div>
-</div>
-
-<main id="scroll-container">
-
-  <section class="scroll-section section-content align-left" id="leak"
-           data-enter="3" data-leave="10" data-animation="fade-up">
-    <div class="section-inner">
-      <span class="section-label">002 / THE PROBLEM</span>
-      <h2 class="section-heading">The Leak</h2>
-      <p class="section-body">Med spas lose consults to no-shows and ghosting. HVAC crews lose after-hours emergency calls to whoever answers first. Roofers lose storm leads in the sixty seconds it takes to call back. A five-minute response makes a lead 21&#215; more likely to book than a thirty-minute one.</p>
-      <p class="section-note">The average local operator loses <strong>$50,000&#8211;$200,000 a year</strong> to slow follow-up alone.</p>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>MISSED CALLS&nbsp;&#9679;&nbsp;LOST REVENUE&nbsp;&#9679;&nbsp;SLOW FOLLOW-UP&nbsp;&#9679;&nbsp;EMPTY CHAIRS&nbsp;&#9679;&nbsp;BURIED LISTINGS&nbsp;&#9679;&nbsp;</span>
+        <span>MISSED CALLS&nbsp;&#9679;&nbsp;LOST REVENUE&nbsp;&#9679;&nbsp;SLOW FOLLOW-UP&nbsp;&#9679;&nbsp;EMPTY CHAIRS&nbsp;&#9679;&nbsp;BURIED LISTINGS&nbsp;&#9679;&nbsp;</span>
+      </div>
     </div>
   </section>
 
-  <section class="scroll-section section-content align-right" id="services"
-           data-enter="12" data-leave="19" data-animation="slide-right">
-    <div class="section-inner">
-      <span class="section-label">003 / FLAGSHIP SERVICE</span>
-      <h2 class="section-heading">AI Lead Capture &amp; Booking</h2>
-      <p class="section-body">For med spas, HVAC, and roofing. A 24/7 AI voice &amp; text agent answers every call, form, and DM within sixty seconds &#8212; triages emergencies, handles pricing questions, and books straight into your calendar. Nights, weekends, storm surges.</p>
-      <ul class="section-list">
-        <li>Instant response to calls, forms &amp; DMs</li>
-        <li>Live calendar &amp; CRM sync</li>
-        <li>Works 24/7, no exceptions</li>
-      </ul>
-      <p class="section-price">$2,000 setup &nbsp;/&nbsp; $1,000 mo</p>
+  <!-- ============ THE LEAK ============ -->
+  <section class="leak" id="leak" data-zone="ink">
+    <p class="kicker"><span>002</span> THE PROBLEM</p>
+    <h2 class="leak-title split-lines">
+      <span class="sl">Every local business</span>
+      <span class="sl">has a <em>leak.</em></span>
+    </h2>
+    <div class="leak-cols">
+      <p class="leak-body split-lines">
+        <span class="sl">HVAC crews lose after-hours emergencies to whoever answers first.</span>
+        <span class="sl">Med spas lose consults to no-shows and ghosting. Roofers lose</span>
+        <span class="sl">storm leads in the sixty seconds it takes to call back. A five-minute</span>
+        <span class="sl">response makes a lead <em>21&#215; more likely to book</em> than thirty.</span>
+      </p>
+      <div class="leak-figure">
+        <div class="leak-number"><span class="stat-number" data-value="200">0</span><span class="leak-suffix">K</span></div>
+        <p class="leak-caption">DOLLARS — the high end of what a single local operator loses to slow follow-up in a year ($50k&#8211;$200k).</p>
+      </div>
     </div>
   </section>
 
-  <section class="scroll-section section-content align-left"
-           data-enter="21" data-leave="27" data-animation="slide-left">
-    <div class="section-inner">
-      <span class="section-label">004 / GROWTH ADD-ON</span>
-      <h2 class="section-heading">Reputation &amp; Review Automation</h2>
-      <p class="section-body">Twenty-four hours after a treatment, service call, or install, an automated SMS survey goes out. Happy customers get a one-tap link to your Google Business Profile. Unhappy ones get flagged to you first &#8212; before they ever go public.</p>
-      <p class="section-price">$500 setup &nbsp;/&nbsp; $300 mo</p>
+  <!-- ============ SYSTEMS DIVISION ============ -->
+  <section class="systems" id="systems" data-zone="cream">
+    <p class="kicker"><span>003</span> DIVISION ONE — SYSTEMS</p>
+    <h2 class="section-title">We plug the leak<br>with <em>machines.</em></h2>
+
+    <div class="service-rows">
+      <article class="service-row" data-cursor="row">
+        <span class="sr-index">S/01</span>
+        <div class="sr-main">
+          <h3>AI Lead Capture &amp; Booking</h3>
+          <p>A 24/7 AI voice &amp; text agent answers every call, form, and DM within sixty seconds — triages emergencies, handles pricing questions, and books straight into your calendar. Nights, weekends, storm surges.</p>
+        </div>
+        <span class="sr-price">$2,000 setup<br>$1,000 / mo</span>
+      </article>
+
+      <article class="service-row" data-cursor="row">
+        <span class="sr-index">S/02</span>
+        <div class="sr-main">
+          <h3>Reputation &amp; Review Automation</h3>
+          <p>Twenty-four hours after every job, an automated SMS survey goes out. Happy customers get a one-tap link to your Google profile. Unhappy ones get flagged to you first — before they go public.</p>
+        </div>
+        <span class="sr-price">$500 setup<br>$300 / mo</span>
+      </article>
+
+      <article class="service-row" data-cursor="row">
+        <span class="sr-index">S/03</span>
+        <div class="sr-main">
+          <h3>Database Reactivation</h3>
+          <p>The risk-free door-opener: we text your dormant customer list with a personalized, compliant campaign and wake up revenue you already paid to acquire. No new leads needed.</p>
+        </div>
+        <span class="sr-price">Campaign<br>pricing on audit</span>
+      </article>
+
+      <article class="service-row" data-cursor="row">
+        <span class="sr-index">S/04</span>
+        <div class="sr-main">
+          <h3>Websites Built To Stand Out</h3>
+          <p>Most local sites look identical — and convert like it. We design distinctive, conversion-focused sites with the same scroll-driven craft as this page. Live in days, not months.</p>
+        </div>
+        <span class="sr-price">$2,500 setup<br>$200 / mo optional</span>
+      </article>
     </div>
   </section>
 
-  <section class="scroll-section section-content align-right" id="web-design"
-           data-enter="29" data-leave="35" data-animation="rotate-in">
-    <div class="section-inner">
-      <span class="section-label">005 / DESIGN STUDIO</span>
-      <h2 class="section-heading">Websites Built To Stand Out</h2>
-      <p class="section-body">Most med spa, HVAC, and roofing sites look identical &#8212; and convert like it. We design and build distinctive, conversion-focused websites &#8212; the same scroll-driven craft behind this very page &#8212; tailored to your brand and live in days, not months.</p>
-      <ul class="section-list">
-        <li>Bespoke design, never a template</li>
-        <li>Scroll-driven motion &amp; animation</li>
-        <li>Live in days, not months</li>
-      </ul>
-      <p class="section-price">$2,500 setup &nbsp;/&nbsp; $200 mo (optional)</p>
+  <!-- ============ THE WORK — INTERACTIVE GALLERY ============ -->
+  <section class="gallery" id="work" data-zone="cream">
+    <p class="kicker"><span>004</span> THE WORK — TAP A FRAME TO STAGE IT</p>
+    <h2 class="section-title">Proof of <em>craft.</em></h2>
+    <p class="gallery-note">Every image below was produced by our AI studio pipeline — no camera, no crew. Labeled as AI-generated concept samples, always.</p>
+
+    <div class="gallery-grid">
+      <figure class="stage reveal-img" data-cursor="view">
+        <div class="stage-media">
+          <img id="stage-img" src="media/stills/listing-exterior.webp" alt="ListingLift — twilight exterior, AI-generated concept sample">
+        </div>
+        <figcaption class="stage-meta">
+          <span class="stage-tag" id="stage-tag">LISTINGLIFT — FOR REAL ESTATE AGENTS</span>
+          <span class="stage-title" id="stage-title">Twilight Exterior</span>
+          <span class="stage-note" id="stage-note">Cinematic listing teaser stills from the agent&#8217;s own photos — $99 launch / $149 per listing.</span>
+        </figcaption>
+      </figure>
+
+      <div class="rail" role="list">
+        <button class="thumb is-active" role="listitem" data-cursor="thumb"
+          data-src="media/stills/listing-exterior.webp"
+          data-tag="LISTINGLIFT — FOR REAL ESTATE AGENTS"
+          data-title="Twilight Exterior"
+          data-note="Cinematic listing teaser stills from the agent&#8217;s own photos — $99 launch / $149 per listing.">
+          <img src="media/stills/listing-exterior.webp" alt="Stage the twilight exterior sample">
+          <span class="thumb-label">01</span>
+        </button>
+        <button class="thumb" role="listitem" data-cursor="thumb"
+          data-src="media/stills/listing-interior.webp"
+          data-tag="LISTINGLIFT — FOR REAL ESTATE AGENTS"
+          data-title="Staged Interior"
+          data-note="Every listing gets vertical + horizontal teaser cuts within 24 hours — no shoot to schedule.">
+          <img src="media/stills/listing-interior.webp" alt="Stage the staged interior sample">
+          <span class="thumb-label">02</span>
+        </button>
+        <button class="thumb" role="listitem" data-cursor="thumb"
+          data-src="media/stills/food-pizza.webp"
+          data-tag="PLATESTORY — FOR RESTAURANTS &amp; BARS"
+          data-title="Wood-Fired Hero"
+          data-note="A month of reels + stills from your dish photos — $395/mo launch, $95 trial reel.">
+          <img src="media/stills/food-pizza.webp" alt="Stage the wood-fired pizza sample">
+          <span class="thumb-label">03</span>
+        </button>
+        <button class="thumb" role="listitem" data-cursor="thumb"
+          data-src="media/stills/food-cocktail.webp"
+          data-tag="PLATESTORY — FOR RESTAURANTS &amp; BARS"
+          data-title="Smoked Old Fashioned"
+          data-note="Bar-mood editorial content, no crew in your kitchen. First batch in 72 hours.">
+          <img src="media/stills/food-cocktail.webp" alt="Stage the smoked cocktail sample">
+          <span class="thumb-label">04</span>
+        </button>
+        <button class="thumb" role="listitem" data-cursor="thumb"
+          data-src="media/stills/launch-product.webp"
+          data-tag="LAUNCHFRAME — FOR PRODUCT CREATORS"
+          data-title="Titanium Hero Render"
+          data-note="Backer-ready Kickstarter visuals at pre-funding prices — kits $250&#8211;$850.">
+          <img src="media/stills/launch-product.webp" alt="Stage the titanium multi-tool sample">
+          <span class="thumb-label">05</span>
+        </button>
+      </div>
     </div>
   </section>
 
-  <section class="scroll-section section-content align-left"
-           data-enter="37" data-leave="43" data-animation="scale-up">
-    <div class="section-inner">
-      <span class="section-label">006 / BUILT FOR YOUR TRADE</span>
-      <h2 class="section-heading">Tuned To Your Industry</h2>
-      <p class="section-body">Speed-to-lead is the foundation. On top of it, we build the one system that moves the needle most in your trade:</p>
-      <ul class="section-list">
-        <li><strong>Med Spas</strong> &#8212; automated rebooking on treatment cycles &amp; no-show recovery that refills empty chairs. Reminder sequences cut no-shows by up to 60%.</li>
-        <li><strong>HVAC</strong> &#8212; 24/7 emergency triage &amp; missed-call text-back that routes true emergencies to your on-call tech and books the rest.</li>
-        <li><strong>Roofing</strong> &#8212; storm-surge lead intake that answers in under 60 seconds, plus AI insurance-supplement review that recovers ~$1,500+ per claim.</li>
-      </ul>
+  <!-- ============ STUDIO — PINNED FILM SCRUB ============ -->
+  <section class="film" id="studio" data-zone="ink">
+    <div class="film-pin">
+      <p class="kicker"><span>005</span> DIVISION TWO — THE CREATIVE STUDIO · MADE WITH AI, DISCLOSED AS AI</p>
+
+      <div class="film-stage">
+        <div class="film-copy">
+          <div class="chapter is-active" data-chapter="0">
+            <span class="ch-tag">FOR REAL ESTATE AGENTS</span>
+            <h3 class="ch-title">Listing<br><em>Lift.</em></h3>
+            <p class="ch-body">The listing video without the videographer. Your existing photos become a cinematic teaser in 24 hours — for less than a quarter of a videographer&#8217;s rate.</p>
+            <span class="ch-price">$99 launch / $149 per listing</span>
+            <a class="pill-cta" href="audit.html" data-cursor="link">Free teaser for one active listing&nbsp;&#8594;</a>
+          </div>
+          <div class="chapter" data-chapter="1">
+            <span class="ch-tag">FOR RESTAURANTS &amp; BARS</span>
+            <h3 class="ch-title">Plate<br><em>Story.</em></h3>
+            <p class="ch-body">Scroll-stopping food reels without a camera crew in your kitchen. Send phone photos, get back agency-grade reels, stills, and captions weekly. No contract.</p>
+            <span class="ch-price">$395/mo launch / $95 trial reel</span>
+            <a class="pill-cta" href="audit.html" data-cursor="link">Claim a free trial reel&nbsp;&#8594;</a>
+          </div>
+          <div class="chapter" data-chapter="2">
+            <span class="ch-tag">FOR PRODUCT CREATORS</span>
+            <h3 class="ch-title">Launch<br><em>Frame.</em></h3>
+            <p class="ch-body">Backer-ready Kickstarter visuals at pre-funding prices. Hero renders and a teaser video in 5 days — compliant with Kickstarter&#8217;s render-disclosure rules.</p>
+            <span class="ch-price">Kits $250 / $450 / $850</span>
+            <a class="pill-cta" href="audit.html" data-cursor="link">Request a free teaser cut&nbsp;&#8594;</a>
+          </div>
+        </div>
+
+        <div class="film-plate">
+          <canvas id="film-canvas"></canvas>
+          <div class="film-caption"><span id="film-index">01</span><span id="film-label">SCROLL TO PLAY — AI GENERATED SAMPLE FILMS</span></div>
+        </div>
+      </div>
+
+      <div class="film-progress" aria-hidden="true"><i id="film-progress-fill"></i></div>
     </div>
   </section>
 
-  <section class="scroll-section section-stats"
-           data-enter="45" data-leave="53" data-animation="stagger-up">
+  <!-- ============ STATS ============ -->
+  <section class="stats" data-zone="orange">
+    <p class="kicker"><span>006</span> THE MATH</p>
     <div class="stats-grid">
-      <div class="stat">
-        <span class="stat-number" data-value="60" data-decimals="0">0</span><span class="stat-suffix">sec</span>
-        <span class="stat-label">Avg. lead response time</span>
+      <div class="stat"><span class="stat-number" data-value="60">0</span><span class="stat-suffix">sec</span><span class="stat-label">Average lead response time</span></div>
+      <div class="stat"><span class="stat-number" data-value="21">0</span><span class="stat-suffix">&#215;</span><span class="stat-label">More likely to book vs. 30 min</span></div>
+      <div class="stat"><span class="stat-number" data-value="40">0</span><span class="stat-suffix">%</span><span class="stat-label">Of leads lost to slow follow-up</span></div>
+      <div class="stat"><span class="stat-number" data-value="24">0</span><span class="stat-suffix">hrs</span><span class="stat-label">From audit to first build live</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process" data-zone="cream">
+    <p class="kicker"><span>007</span> PROCESS</p>
+    <h2 class="section-title">Audit. Build. <em>Launch.</em></h2>
+    <ol class="steps">
+      <li class="step" data-cursor="row"><span class="step-no">01</span><div><h3>The Free Audit</h3><p>Not a contact form — a real automated system. It pulls your live website and Google Business Profile, scores four categories, and emails you the report.</p></div></li>
+      <li class="step" data-cursor="row"><span class="step-no">02</span><div><h3>Custom Build</h3><p>Workflows wired to your actual CRM and calendar. Deterministic guardrails, zero-temperature prompts, human escalation on anything uncertain.</p></div></li>
+      <li class="step" data-cursor="row"><span class="step-no">03</span><div><h3>Live in 48&#8211;72 Hours</h3><p>Systems go live in days. Studio work delivers in 24 hours to 5 days depending on the kit.</p></div></li>
+      <li class="step" data-cursor="row"><span class="step-no">04</span><div><h3>One Operator, Full Ownership</h3><p>No account managers, no hand-offs. Monitored monthly, tuned to your trade.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- ============ PRICING INDEX ============ -->
+  <section class="pricing" id="pricing" data-zone="cream">
+    <p class="kicker"><span>008</span> THE INDEX</p>
+    <h2 class="section-title">Straight <em>prices.</em></h2>
+    <div class="price-cols">
+      <div class="price-col">
+        <h3 class="pc-head">SYSTEMS</h3>
+        <div class="price-line" data-cursor="row"><span>AI Lead Capture &amp; Booking</span><i></i><span>$2,000 + $1,000/mo</span></div>
+        <div class="price-line" data-cursor="row"><span>Reputation &amp; Reviews</span><i></i><span>$500 + $300/mo</span></div>
+        <div class="price-line" data-cursor="row"><span>Database Reactivation</span><i></i><span>From audit</span></div>
+        <div class="price-line" data-cursor="row"><span>Bespoke Website</span><i></i><span>$2,500 + $200/mo</span></div>
       </div>
-      <div class="stat">
-        <span class="stat-number" data-value="21" data-decimals="0">0</span><span class="stat-suffix">&#215;</span>
-        <span class="stat-label">More likely to book vs. 30 min</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number" data-value="40" data-decimals="0">0</span><span class="stat-suffix">%</span>
-        <span class="stat-label">Leads lost to slow follow-up</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number" data-value="65" data-decimals="0">0</span><span class="stat-suffix">%</span>
-        <span class="stat-label">Target margin after automation</span>
+      <div class="price-col">
+        <h3 class="pc-head">STUDIO</h3>
+        <div class="price-line" data-cursor="row"><span>ListingLift — per listing</span><i></i><span>$99&#8211;$149</span></div>
+        <div class="price-line" data-cursor="row"><span>PlateStory — monthly</span><i></i><span>$395 / trial $95</span></div>
+        <div class="price-line" data-cursor="row"><span>LaunchFrame — kits</span><i></i><span>$250&#8211;$850</span></div>
+        <div class="price-line" data-cursor="row"><span>Rush / rescue cuts</span><i></i><span>48 hours</span></div>
       </div>
     </div>
   </section>
 
-  <section class="scroll-section section-content align-left" id="studio"
-           data-enter="56" data-leave="62" data-animation="clip-reveal">
-    <div class="section-inner">
-      <span class="section-label">007 / THE CREATIVE STUDIO</span>
-      <h2 class="section-heading">Shot By<br><em>Nobody.</em></h2>
-      <p class="section-body">Daily AI Solutions now runs a full AI creative studio. Cinematic listing films, food reels, and product launch kits &#8212; generated, graded, and delivered in 24&#8211;72 hours, at a fraction of crew prices. Every frame moving behind this text was produced without a camera.</p>
-      <p class="section-note">Three productized services. Three industries. Zero shoots.</p>
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="contact" data-zone="ink">
+    <p class="kicker"><span>009</span> GET STARTED</p>
+    <h2 class="cta-title"><span class="ht-line"><span class="ht-word">FIND YOUR</span></span><span class="ht-line"><span class="ht-word"><em>LEAK.</em></span></span></h2>
+    <p class="cta-body">A free, no-obligation audit of your response time and online presence. A real scored report lands in your inbox — takes two minutes to request.</p>
+    <div class="cta-actions">
+      <a href="audit.html" class="big-cta" data-cursor="link">Request Your Free Audit&nbsp;&#8594;</a>
+      <a href="https://links.launchcart.com/widget/bookings/15-minute-ai-systems-walkthrough" class="ghost-cta" data-cursor="link">Or book a 15-minute call&nbsp;&#8594;</a>
     </div>
-  </section>
-
-  <section class="scroll-section section-content align-left" id="listinglift"
-           data-enter="64" data-leave="70" data-animation="slide-left">
-    <div class="section-inner">
-      <span class="section-label">008 / FOR REAL ESTATE AGENTS</span>
-      <h2 class="section-heading">ListingLift</h2>
-      <p class="section-body">The listing video without the videographer. We turn the photos you already paid for into a scroll-stopping cinematic teaser &#8212; vertical and horizontal cuts, agent-branded, ready for MLS-adjacent social.</p>
-      <ul class="section-list">
-        <li>Built from your existing listing photos</li>
-        <li>24-hour turnaround, no shoot to schedule</li>
-        <li>Virtual twilight conversion add-on</li>
-      </ul>
-      <p class="section-price">$99 launch &nbsp;/&nbsp; $149 standard per listing</p>
-      <div class="sample-strip">
-        <img src="media/stills/listing-exterior.webp" alt="ListingLift demo — twilight exterior still" loading="lazy">
-        <img src="media/stills/listing-interior.webp" alt="ListingLift demo — staged interior still" loading="lazy">
-      </div>
-      <a class="studio-cta" href="audit.html">Get a free teaser for one active listing&nbsp;&nbsp;&#8594;</a>
-    </div>
-  </section>
-
-  <section class="scroll-section section-content align-right" id="platestory"
-           data-enter="72" data-leave="78" data-animation="slide-right">
-    <div class="section-inner">
-      <span class="section-label">009 / FOR RESTAURANTS &amp; BARS</span>
-      <h2 class="section-heading">PlateStory</h2>
-      <p class="section-body">A month of scroll-stopping content without a camera crew in your kitchen. Send us your dish photos; get back agency-grade reels, stills, and captions every week &#8212; no contract, cancel anytime.</p>
-      <ul class="section-list">
-        <li>4 reels + 8 stills + captions, monthly</li>
-        <li>First batch in 72 hours</li>
-        <li>Less than half the cheapest agency retainer</li>
-      </ul>
-      <p class="section-price">$395/mo launch &nbsp;/&nbsp; $95 trial reel</p>
-      <div class="sample-strip">
-        <img src="media/stills/food-pizza.webp" alt="PlateStory demo — wood-fired pizza still" loading="lazy">
-        <img src="media/stills/food-cocktail.webp" alt="PlateStory demo — smoked cocktail still" loading="lazy">
-      </div>
-      <a class="studio-cta" href="audit.html">Claim a free trial reel from your dish photos&nbsp;&nbsp;&#8594;</a>
-    </div>
-  </section>
-
-  <section class="scroll-section section-content align-left" id="launchframe"
-           data-enter="80" data-leave="86" data-animation="rotate-in">
-    <div class="section-inner">
-      <span class="section-label">010 / FOR PRODUCT CREATORS</span>
-      <h2 class="section-heading">LaunchFrame</h2>
-      <p class="section-body">Backer-ready Kickstarter visuals at pre-funding prices. Hero renders, campaign-page graphics, and a teaser video built from the product photos you already have &#8212; fully compliant with Kickstarter&#8217;s render-disclosure rules.</p>
-      <ul class="section-list">
-        <li>5 hero renders + teaser + page graphics</li>
-        <li>5-day delivery, 48-hour campaign rescue</li>
-        <li>A tenth of production-company cost</li>
-      </ul>
-      <p class="section-price">Launch Kit $850 &nbsp;/&nbsp; teaser $450 &nbsp;/&nbsp; renders $250</p>
-      <div class="sample-strip">
-        <img src="media/stills/launch-product.webp" alt="LaunchFrame demo — titanium multi-tool hero render" loading="lazy">
-      </div>
-      <a class="studio-cta" href="audit.html">Request a free teaser cut for your campaign&nbsp;&nbsp;&#8594;</a>
-    </div>
-  </section>
-
-  <section class="scroll-section section-content align-left" id="how"
-           data-enter="88" data-leave="92" data-animation="clip-reveal">
-    <div class="section-inner">
-      <span class="section-label">011 / PROCESS</span>
-      <h2 class="section-heading">Audit. Build. Launch.</h2>
-      <ol class="process-list">
-        <li><span>01</span> Free response-time &amp; lead-leak audit</li>
-        <li><span>02</span> Custom workflow built on your CRM &amp; calendar</li>
-        <li><span>03</span> Guardrails, validation, human-in-the-loop review</li>
-        <li><span>04</span> Live in 48&#8211;72 hours, monitored monthly</li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="scroll-section section-content align-right" id="pricing"
-           data-enter="93" data-leave="96" data-animation="scale-up">
-    <div class="section-inner">
-      <span class="section-label">012 / WHY US</span>
-      <h2 class="section-heading">Built For Reliability, Not Demos</h2>
-      <p class="section-body">Deterministic guardrails, zero-temperature system prompts, and human escalation on anything uncertain. Deep playbooks for med spas, HVAC, and roofing &#8212; not a generic template. One operator, full ownership &#8212; no account managers, no hand-offs.</p>
-    </div>
-  </section>
-
-  <section class="scroll-section section-cta" data-enter="97" data-leave="100" data-animation="fade-up" data-persist="true">
-    <div class="section-inner">
-      <span class="section-label">013 / GET STARTED</span>
-      <h2 class="cta-heading">FIND YOUR<br><em>LEAK.</em></h2>
-      <p class="section-body">Free, no-obligation audit of your response time or compliance exposure. Takes less than five minutes to request.</p>
-      <a href="audit.html" class="cta-button">Request Your Free Audit &nbsp;→</a>
+    <div class="contact-strip">
+      <div><span>EMAIL</span>contact@dailyai.solutions</div>
+      <div><span>PHONE</span>(929) 640-0419</div>
+      <div><span>AREA</span>New York City &amp; NY Metro</div>
     </div>
   </section>
 
 </main>
 
-<section id="contact" class="contact-section">
-  <div class="contact-wrap">
-    <div class="contact-info">
-      <span class="section-label">014 / CONTACT</span>
-      <h2 class="section-heading">Let&#8217;s Talk.</h2>
-      <p class="section-body">Tell us about your business and we&#8217;ll send back a free audit within two business days.</p>
-      <div class="contact-details">
-        <div><span class="cd-label">Email</span><span class="cd-value">contact@dailyai.solutions</span></div>
-        <div><span class="cd-label">Phone</span><span class="cd-value">(929) 640-0419</span></div>
-        <div><span class="cd-label">Service Area</span><span class="cd-value">New York City &amp; NY Metro</span></div>
-      </div>
-    </div>
-    <div class="contact-cta">
-      <p class="section-body">The fastest way to start is the free audit — two minutes to fill out, and a real scored report lands in your inbox. Prefer to talk first? Use the chat bubble in the corner or email us directly.</p>
-      <a href="audit.html" class="cta-button">Request Your Free Audit &nbsp;→</a>
-      <a href="https://links.launchcart.com/widget/bookings/15-minute-ai-systems-walkthrough" class="contact-book-link">Or book a free 15-minute call directly &nbsp;→</a>
-    </div>
-  </div>
-</section>
-
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="brand-word footer-brand">DAILY AI<br><em>SOLUTIONS</em></div>
-    <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#studio">Studio</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </div>
-    <div class="footer-copy">&#169; 2026 DAILY AI SOLUTIONS &#8212; contact@dailyai.solutions &#8212; (929) 640-0419</div>
+  <div class="footer-brand">DAILY <em>AI</em> SOLUTIONS</div>
+  <div class="footer-links">
+    <a href="#systems" data-cursor="link">Systems</a>
+    <a href="#work" data-cursor="link">The Work</a>
+    <a href="#studio" data-cursor="link">Studio</a>
+    <a href="#pricing" data-cursor="link">Pricing</a>
+    <a href="privacy.html" data-cursor="link">Privacy</a>
+    <a href="terms.html" data-cursor="link">Terms</a>
   </div>
+  <div class="footer-copy">&#169; 2026 DAILY AI SOLUTIONS — ALL SAMPLE IMAGERY IS AI-GENERATED AND LABELED AS SUCH.</div>
 </footer>
 
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a4add591951dd80c1d0fa54" data-source="WEB_USER"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
