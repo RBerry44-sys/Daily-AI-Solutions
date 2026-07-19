@@ -163,11 +163,11 @@ body[data-zone="ink"] .nav-cta{background:var(--orange);}
   border-top:1px solid var(--zone-line);border-bottom:1px solid var(--zone-line);
   overflow:hidden;padding:12px 0;background:var(--zone-bg);
 }
-.ticker-track{display:flex;width:max-content;animation:tick 26s linear infinite;}
+.ticker-track{display:flex;width:max-content;will-change:transform;}
 .ticker-track span{
   font-family:var(--font-mono);font-size:12px;letter-spacing:.22em;color:var(--zone-mute);white-space:nowrap;
+  flex:none;
 }
-@keyframes tick{to{transform:translateX(-50%);}}
 
 /* ============ LEAK ============ */
 .leak{padding:22vh var(--pad);}

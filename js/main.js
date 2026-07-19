@@ -370,6 +370,42 @@ function filmLoop() {
 resizeFilmCanvas();
 filmLoop();
 
+/* ============ SEAMLESS TICKER ============ */
+/* Clone the phrase block until the track is wider than any screen plus one
+   full block, then loop translateX over exactly one block width — no gaps,
+   no restarts, constant speed on every viewport. */
+(function initTicker() {
+  const track = document.getElementById("ticker-track");
+  if (!track) return;
+  const block = track.querySelector(".ticker-block");
+  if (!block) return;
+  const SPEED = 70; /* px per second */
+  let tween = null;
+
+  function build() {
+    /* reset to a single block */
+    track.querySelectorAll(".ticker-block").forEach((b, i) => { if (i > 0) b.remove(); });
+    gsap.set(track, { x: 0 });
+    const blockW = block.getBoundingClientRect().width;
+    if (!blockW) return;
+    const needed = Math.max(2, Math.ceil((window.innerWidth + blockW) / blockW) + 1);
+    for (let i = 1; i < needed; i++) track.appendChild(block.cloneNode(true));
+    if (tween) tween.kill();
+    tween = gsap.to(track, {
+      x: -blockW,
+      duration: blockW / SPEED,
+      ease: "none",
+      repeat: -1,
+    });
+  }
+  /* fonts change the block width — build after they load, and on resize */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  else window.addEventListener("load", build);
+  build();
+  let rT;
+  window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(build, 250); });
+})();
+
 /* ============ CUSTOM CURSOR ============ */
 const dot = document.querySelector(".cursor-dot");
 const ring = document.querySelector(".cursor-ring");
