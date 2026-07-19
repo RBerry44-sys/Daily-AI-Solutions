@@ -243,9 +243,9 @@ window.addEventListener("keydown", (e) => {
 /* ============ FILM — PINNED, DAMPED FRAME SCRUB ============ */
 const FILM = {
   chapters: [
-    { dir: "media/frames-listing", count: 76, label: "LISTINGLIFT — AI GENERATED SAMPLE FILM", vertical: false },
-    { dir: "media/frames-food",    count: 76, label: "PLATESTORY — AI GENERATED SAMPLE FILM",  vertical: true  },
-    { dir: "media/frames-launch",  count: 76, label: "LAUNCHFRAME — AI GENERATED SAMPLE FILM", vertical: false },
+    { dir: "media/frames-listing", count: 76, label: "FILMS — AI GENERATED SAMPLE",  vertical: false },
+    { dir: "media/frames-food",    count: 76, label: "SHORTS — AI GENERATED SAMPLE", vertical: true  },
+    { dir: "media/frames-launch",  count: 76, label: "STILLS IN MOTION — AI GENERATED SAMPLE", vertical: false },
   ],
   frames: [[], [], []],
 };
