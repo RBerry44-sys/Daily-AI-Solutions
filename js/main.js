@@ -99,7 +99,7 @@ document.querySelectorAll(".split-lines").forEach((el) => {
 const FADE_TARGETS = [
   ".kicker", ".section-title", ".gallery-note", ".service-row", ".step",
   ".price-line", ".pc-head", ".cta-body", ".cta-actions", ".contact-strip",
-  ".leak-figure", ".stage-meta", ".rail .thumb", ".stat",
+  ".leak-figure", ".filter-bar", ".stat",
 ];
 FADE_TARGETS.forEach((sel) => {
   document.querySelectorAll(sel).forEach((el) => {
@@ -132,74 +132,112 @@ document.querySelectorAll(".stat-number").forEach((el) => {
   });
 });
 
-/* ============ STAGE POP-IN (scroll-stopping image entrance) ============ */
-document.querySelectorAll(".reveal-img .stage-media").forEach((el) => {
+/* ============ PORTFOLIO — CARD POP-IN, FILTERS, VIDEO, LIGHTBOX ============ */
+const caseCards = Array.from(document.querySelectorAll(".case-card"));
+
+/* scroll-stopping pop-in: cards reveal with clip + scale (staggered by column) */
+caseCards.forEach((card, i) => {
+  gsap.set(card, { clipPath: "inset(14% 10% 14% 10% round 16px)", scale: 0.94, opacity: 0 });
   ScrollTrigger.create({
-    trigger: el, start: "top 80%",
-    onEnter: () => gsap.to(el, {
-      clipPath: "inset(0% 0% 0% 0% round 16px)", scale: 1,
-      duration: 1.3, ease: "power4.inOut",
+    trigger: card, start: "top 88%",
+    onEnter: () => gsap.to(card, {
+      clipPath: "inset(0% 0% 0% 0% round 16px)", scale: 1, opacity: 1,
+      duration: 1.1, delay: (i % 3) * 0.08, ease: "power4.out",
     }),
     once: true,
   });
-  /* subtle parallax inside the stage */
-  gsap.fromTo("#stage-img", { yPercent: -6 }, {
-    yPercent: 6, ease: "none",
-    scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+});
+
+/* videos play only while on screen (battery + smoothness) */
+const vidObserver = new IntersectionObserver((entries) => {
+  entries.forEach((en) => {
+    const v = en.target;
+    if (en.isIntersecting) { v.play().catch(() => {}); }
+    else { v.pause(); }
+  });
+}, { threshold: 0.25 });
+document.querySelectorAll(".cc-media video").forEach((v) => vidObserver.observe(v));
+
+/* industry filters */
+const filterBtns = Array.from(document.querySelectorAll(".filter-btn"));
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach((b) => b.classList.remove("is-on"));
+    btn.classList.add("is-on");
+    const f = btn.dataset.filter;
+    const show = caseCards.filter((c) => f === "all" || c.dataset.cat === f);
+    const hide = caseCards.filter((c) => !(f === "all" || c.dataset.cat === f));
+    hide.forEach((c) => c.classList.add("is-hidden"));
+    show.forEach((c) => c.classList.remove("is-hidden"));
+    gsap.fromTo(show,
+      { opacity: 0, y: 26, scale: 0.97 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.06, ease: "power3.out", overwrite: "auto" });
+    ScrollTrigger.refresh();
   });
 });
 
-/* ============ INTERACTIVE GALLERY — CLICK TO STAGE ============ */
-const stageImg = document.getElementById("stage-img");
-const stageTag = document.getElementById("stage-tag");
-const stageTitle = document.getElementById("stage-title");
-const stageNote = document.getElementById("stage-note");
-const thumbs = Array.from(document.querySelectorAll(".thumb"));
-let galleryBusy = false;
+/* case lightbox */
+const casebox = document.getElementById("casebox");
+const cbMedia = document.getElementById("cb-media");
+const cbTag = document.getElementById("cb-tag");
+const cbTitle = document.getElementById("cb-title");
+const cbStory = document.getElementById("cb-story");
+const cbDeliv = document.getElementById("cb-deliv");
+const cbValue = document.getElementById("cb-value");
 
-/* preload all gallery sources so swaps are instant */
-thumbs.forEach((t) => { const i = new Image(); i.src = t.dataset.src; });
+function openCase(card) {
+  const kind = card.dataset.kind;
+  cbMedia.innerHTML = "";
+  if (kind.startsWith("video")) {
+    const v = document.createElement("video");
+    v.src = card.dataset.media;
+    v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.controls = true;
+    cbMedia.appendChild(v);
+  } else {
+    const img = document.createElement("img");
+    img.src = card.dataset.media;
+    img.alt = card.dataset.title + " — AI-generated concept campaign";
+    cbMedia.appendChild(img);
+  }
+  cbTag.innerHTML = card.dataset.tag;
+  cbTitle.textContent = card.dataset.title;
+  cbStory.innerHTML = card.dataset.story;
+  cbDeliv.innerHTML = card.dataset.deliv;
+  cbValue.innerHTML = card.dataset.value;
 
-function stageSwap(btn) {
-  if (galleryBusy || btn.classList.contains("is-active")) return;
-  galleryBusy = true;
-
-  thumbs.forEach((t) => t.classList.remove("is-active"));
-  btn.classList.add("is-active");
-
-  const tl = gsap.timeline({ onComplete: () => (galleryBusy = false) });
-
-  /* out: wipe down + slight zoom */
-  tl.to(stageImg, {
-    clipPath: "inset(0% 0% 100% 0%)", scale: 1.08, duration: 0.38, ease: "power3.in",
-  });
-  tl.to([stageTag, stageTitle, stageNote], {
-    opacity: 0, y: -14, duration: 0.28, stagger: 0.04, ease: "power2.in",
-  }, "<");
-
-  /* swap content at the midpoint */
-  tl.add(() => {
-    stageImg.src = btn.dataset.src;
-    stageImg.alt = `${btn.dataset.title} — AI-generated concept sample`;
-    stageTag.innerHTML = btn.dataset.tag;
-    stageTitle.textContent = btn.dataset.title;
-    stageNote.innerHTML = btn.dataset.note;
-  });
-
-  /* in: pop — reveal up + settle from 1.15 */
-  tl.fromTo(stageImg,
-    { clipPath: "inset(100% 0% 0% 0%)", scale: 1.15 },
-    { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 0.85, ease: "power4.out" });
-  tl.fromTo([stageTag, stageTitle, stageNote],
+  casebox.classList.add("is-open");
+  casebox.setAttribute("aria-hidden", "false");
+  lenis.stop();
+  gsap.fromTo(".casebox-backdrop", { opacity: 0 }, { opacity: 1, duration: 0.35 });
+  gsap.fromTo(".casebox-panel",
+    { opacity: 0, y: 40, scale: 0.96 },
+    { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power4.out" });
+  gsap.fromTo(".cb-info > *",
     { opacity: 0, y: 18 },
-    { opacity: 1, y: 0, duration: 0.55, stagger: 0.07, ease: "power3.out" }, "-=0.5");
+    { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.15, ease: "power3.out" });
 }
-
-thumbs.forEach((btn) => {
-  btn.addEventListener("click", () => stageSwap(btn));
-  btn.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); stageSwap(btn); }
+function closeCase() {
+  gsap.to(".casebox-panel", { opacity: 0, y: 26, scale: 0.97, duration: 0.3, ease: "power2.in" });
+  gsap.to(".casebox-backdrop", {
+    opacity: 0, duration: 0.3, delay: 0.05,
+    onComplete: () => {
+      casebox.classList.remove("is-open");
+      casebox.setAttribute("aria-hidden", "true");
+      cbMedia.innerHTML = "";
+      lenis.start();
+    },
   });
+}
+caseCards.forEach((card) => {
+  card.addEventListener("click", () => openCase(card));
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCase(card); }
+  });
+});
+document.getElementById("cb-close").addEventListener("click", (e) => { e.stopPropagation(); closeCase(); });
+document.querySelector(".casebox-backdrop").addEventListener("click", closeCase);
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && casebox.classList.contains("is-open")) closeCase();
 });
 
 /* ============ FILM — PINNED, DAMPED FRAME SCRUB ============ */

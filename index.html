@@ -152,68 +152,153 @@
     </div>
   </section>
 
-  <!-- ============ THE WORK — INTERACTIVE GALLERY ============ -->
-  <section class="gallery" id="work" data-zone="cream">
-    <p class="kicker"><span>004</span> THE WORK — TAP A FRAME TO STAGE IT</p>
+  <!-- ============ THE WORK — CASE-STUDY PORTFOLIO ============ -->
+  <section class="portfolio" id="work" data-zone="cream">
+    <p class="kicker"><span>004</span> SELECTED WORK — CONCEPT CAMPAIGNS BY THE STUDIO</p>
     <h2 class="section-title">Proof of <em>craft.</em></h2>
-    <p class="gallery-note">Every image below was produced by our AI studio pipeline — no camera, no crew. Labeled as AI-generated concept samples, always.</p>
+    <p class="gallery-note">Films, shorts, and campaign stills for the industries we serve — every asset produced by our AI pipeline, no camera, no crew, delivered in days. These are concept campaigns built to show the standard; client work replaces them as it ships. No fake logos, no invented results.</p>
 
-    <div class="gallery-grid">
-      <figure class="stage reveal-img" data-cursor="view">
-        <div class="stage-media">
-          <img id="stage-img" src="media/stills/listing-exterior.webp" alt="ListingLift — twilight exterior, AI-generated concept sample">
-        </div>
-        <figcaption class="stage-meta">
-          <span class="stage-tag" id="stage-tag">LISTINGLIFT — FOR REAL ESTATE AGENTS</span>
-          <span class="stage-title" id="stage-title">Twilight Exterior</span>
-          <span class="stage-note" id="stage-note">Cinematic listing teaser stills from the agent&#8217;s own photos — $99 launch / $149 per listing.</span>
-        </figcaption>
-      </figure>
+    <div class="filter-bar" role="tablist" aria-label="Filter portfolio by industry">
+      <button class="filter-btn is-on" data-filter="all" data-cursor="link">All Work</button>
+      <button class="filter-btn" data-filter="realestate" data-cursor="link">Real Estate</button>
+      <button class="filter-btn" data-filter="hospitality" data-cursor="link">Restaurants &amp; Bars</button>
+      <button class="filter-btn" data-filter="beauty" data-cursor="link">Med Spa &amp; Beauty</button>
+      <button class="filter-btn" data-filter="trades" data-cursor="link">Home Services</button>
+      <button class="filter-btn" data-filter="product" data-cursor="link">Product &amp; E-Com</button>
+    </div>
 
-      <div class="rail" role="list">
-        <button class="thumb is-active" role="listitem" data-cursor="thumb"
-          data-src="media/stills/listing-exterior.webp"
-          data-tag="LISTINGLIFT — FOR REAL ESTATE AGENTS"
-          data-title="Twilight Exterior"
-          data-note="Cinematic listing teaser stills from the agent&#8217;s own photos — $99 launch / $149 per listing.">
-          <img src="media/stills/listing-exterior.webp" alt="Stage the twilight exterior sample">
-          <span class="thumb-label">01</span>
-        </button>
-        <button class="thumb" role="listitem" data-cursor="thumb"
-          data-src="media/stills/listing-interior.webp"
-          data-tag="LISTINGLIFT — FOR REAL ESTATE AGENTS"
-          data-title="Staged Interior"
-          data-note="Every listing gets vertical + horizontal teaser cuts within 24 hours — no shoot to schedule.">
-          <img src="media/stills/listing-interior.webp" alt="Stage the staged interior sample">
-          <span class="thumb-label">02</span>
-        </button>
-        <button class="thumb" role="listitem" data-cursor="thumb"
-          data-src="media/stills/food-pizza.webp"
-          data-tag="PLATESTORY — FOR RESTAURANTS &amp; BARS"
-          data-title="Wood-Fired Hero"
-          data-note="A month of reels + stills from your dish photos — $395/mo launch, $95 trial reel.">
-          <img src="media/stills/food-pizza.webp" alt="Stage the wood-fired pizza sample">
-          <span class="thumb-label">03</span>
-        </button>
-        <button class="thumb" role="listitem" data-cursor="thumb"
-          data-src="media/stills/food-cocktail.webp"
-          data-tag="PLATESTORY — FOR RESTAURANTS &amp; BARS"
-          data-title="Smoked Old Fashioned"
-          data-note="Bar-mood editorial content, no crew in your kitchen. First batch in 72 hours.">
-          <img src="media/stills/food-cocktail.webp" alt="Stage the smoked cocktail sample">
-          <span class="thumb-label">04</span>
-        </button>
-        <button class="thumb" role="listitem" data-cursor="thumb"
-          data-src="media/stills/launch-product.webp"
-          data-tag="LAUNCHFRAME — FOR PRODUCT CREATORS"
-          data-title="Titanium Hero Render"
-          data-note="Backer-ready Kickstarter visuals at pre-funding prices — kits $250&#8211;$850.">
-          <img src="media/stills/launch-product.webp" alt="Stage the titanium multi-tool sample">
-          <span class="thumb-label">05</span>
-        </button>
-      </div>
+    <div class="case-grid">
+
+      <article class="case-card span-7" data-cat="realestate" data-cursor="view" tabindex="0"
+        data-kind="video" data-media="media/video/listing-teaser.mp4"
+        data-tag="REAL ESTATE — LISTING FILM"
+        data-title="Golden Hour"
+        data-story="A cinematic listing teaser produced entirely from still photos — no drone, no crew, no scheduling. Agents send the photos they already paid for; a broadcast-look film comes back within 24 hours in vertical and horizontal cuts, ready for Instagram, MLS-adjacent social, and email blasts."
+        data-deliv="15&#8211;30s cinematic teaser · vertical + horizontal cuts · agent-branded title card · 24-hour turnaround"
+        data-value="Replaces a $400&#8211;$800 videographer shoot and a week of scheduling.">
+        <div class="cc-media"><video src="media/video/listing-teaser.mp4" muted loop playsinline preload="metadata"></video><span class="cc-badge">FILM</span></div>
+        <div class="cc-info"><span class="cc-tag">REAL ESTATE — LISTING FILM</span><h3>Golden Hour</h3><p>A listing teaser with no videographer — photos in, cinema out, 24 hours.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-5" data-cat="hospitality" data-cursor="view" tabindex="0"
+        data-kind="video-vertical" data-media="media/video/food-reel.mp4"
+        data-tag="RESTAURANTS — SOCIAL SHORT"
+        data-title="The Cheese Pull"
+        data-story="A 9:16 social short built for the scroll: macro cheese-pull cinematography, steam, bokeh — the kind of reel that stops thumbs and fills weeknight covers. Restaurants send phone photos of real dishes; we return agency-grade shorts with captions, weekly."
+        data-deliv="9:16 social short · caption + hashtag copy · part of a 4-reel monthly drop · first batch in 72 hours"
+        data-value="Under half the cheapest agency retainer we found ($995/mo) — no contract.">
+        <div class="cc-media cc-vert"><video src="media/video/food-reel.mp4" muted loop playsinline preload="metadata"></video><span class="cc-badge">SHORT</span></div>
+        <div class="cc-info"><span class="cc-tag">RESTAURANTS — SOCIAL SHORT</span><h3>The Cheese Pull</h3><p>Scroll-stopping vertical shorts from the dish photos on your phone.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-4" data-cat="beauty" data-cursor="view" tabindex="0"
+        data-kind="image-vertical" data-media="media/stills/medspa-campaign.webp"
+        data-tag="MED SPA — BOOKING CAMPAIGN"
+        data-title="Glow Season"
+        data-story="Editorial campaign creative for treatment promotions — the visual layer for booking ads, rebooking sequences, and seasonal pushes. Built to pair with our med-spa systems: no-show recovery and treatment-cycle rebooking that refill empty chairs."
+        data-deliv="Campaign hero stills · ad-ratio crops (4:5, 9:16, 1:1) · matched to your treatment menu"
+        data-value="Campaign-grade creative without a studio day — typically $1,500+ per shoot.">
+        <div class="cc-media cc-vert"><img src="media/stills/medspa-campaign.webp" alt="Med spa booking campaign concept — AI-generated" loading="lazy"><span class="cc-badge">CAMPAIGN</span></div>
+        <div class="cc-info"><span class="cc-tag">MED SPA — BOOKING CAMPAIGN</span><h3>Glow Season</h3><p>Treatment-promo creative that feeds your booking funnel.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-8" data-cat="trades" data-cursor="view" tabindex="0"
+        data-kind="image" data-media="media/stills/roofing-storm.webp"
+        data-tag="ROOFING &amp; HVAC — LEAD-GEN AD"
+        data-title="After the Storm"
+        data-story="Storm-response ad creative for the hours that matter — when homeowners are searching and whoever shows up first wins. Built to run with our 60-second lead-capture system so the ad and the response machine work as one unit."
+        data-deliv="Hero ad creative · geo-targeted variants · sized for Facebook, Google Display &amp; postcards"
+        data-value="Ad-agency-grade creative on a trade-business budget, live in 48 hours.">
+        <div class="cc-media"><img src="media/stills/roofing-storm.webp" alt="Roofing storm-response ad concept — AI-generated" loading="lazy"><span class="cc-badge">AD CREATIVE</span></div>
+        <div class="cc-info"><span class="cc-tag">ROOFING &amp; HVAC — LEAD-GEN AD</span><h3>After the Storm</h3><p>Storm-surge ad creative wired to a 60-second response machine.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-4" data-cat="product" data-cursor="view" tabindex="0"
+        data-kind="image-vertical" data-media="media/stills/serum-ad.webp"
+        data-tag="E-COMMERCE — PAID SOCIAL AD"
+        data-title="Splash"
+        data-story="Product ad stills engineered for paid social — frozen motion, hero light, thumb-stopping contrast. E-com brands burn through creative weekly; we produce fresh ad variants on demand instead of scheduling reshoots."
+        data-deliv="Hero ad still · 3 creative variants for A/B testing · ratios for Meta + TikTok"
+        data-value="UGC creators charge $100&#8211;$500 per asset with 2&#8211;4 week lead times.">
+        <div class="cc-media cc-vert"><img src="media/stills/serum-ad.webp" alt="Skincare product ad concept — AI-generated" loading="lazy"><span class="cc-badge">AD CREATIVE</span></div>
+        <div class="cc-info"><span class="cc-tag">E-COMMERCE — PAID SOCIAL AD</span><h3>Splash</h3><p>Fresh ad variants on demand — no reshoots, no creator queues.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-6" data-cat="product" data-cursor="view" tabindex="0"
+        data-kind="video" data-media="media/video/product-teaser.mp4"
+        data-tag="CROWDFUNDING — LAUNCH FILM"
+        data-title="Titanium"
+        data-story="A backer-ready product teaser at pre-funding prices. The campaign video is the #1 conversion driver on Kickstarter — and production companies quote $1,000&#8211;$5,000+ for it. We build hero films and renders from the creator&#8217;s existing photos, disclosed per Kickstarter&#8217;s render rules."
+        data-deliv="15&#8211;30s teaser film · 5 hero renders · campaign-page graphics · 5-day delivery, 48-hour rescue cuts"
+        data-value="A tenth of production-company cost — kits $250&#8211;$850.">
+        <div class="cc-media"><video src="media/video/product-teaser.mp4" muted loop playsinline preload="metadata"></video><span class="cc-badge">FILM</span></div>
+        <div class="cc-info"><span class="cc-tag">CROWDFUNDING — LAUNCH FILM</span><h3>Titanium</h3><p>The launch film that funds campaigns, at pre-funding prices.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-6" data-cat="realestate" data-cursor="view" tabindex="0"
+        data-kind="image" data-media="media/stills/listing-exterior.webp"
+        data-tag="REAL ESTATE — TWILIGHT CONVERSION"
+        data-title="Blue Hour"
+        data-story="Daytime exterior photos converted to prime twilight — the single highest-impact upgrade a listing photo can get. Sold as an add-on to every listing film, priced so agents use it on every mid-market property, not just luxury."
+        data-deliv="Virtual twilight conversion · hero exterior stills · $25 per photo add-on"
+        data-value="Real twilight shoots require a second visit and golden-hour timing.">
+        <div class="cc-media"><img src="media/stills/listing-exterior.webp" alt="Twilight conversion concept — AI-generated" loading="lazy"><span class="cc-badge">STILLS</span></div>
+        <div class="cc-info"><span class="cc-tag">REAL ESTATE — TWILIGHT CONVERSION</span><h3>Blue Hour</h3><p>Every daytime exterior becomes a twilight hero shot.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-3" data-cat="hospitality" data-cursor="view" tabindex="0"
+        data-kind="image-vertical" data-media="media/stills/food-cocktail.webp"
+        data-tag="BARS — MENU LAUNCH"
+        data-title="Smoke &amp; Copper"
+        data-story="Bar-program campaign stills — moody, editorial, built to make a new cocktail menu feel like an event. Shot-free content for launch nights, story highlights, and printed table cards."
+        data-deliv="Menu-launch still set · story + feed crops · captions included"
+        data-value="No crew in the bar, no closed-for-shoot night.">
+        <div class="cc-media cc-vert"><img src="media/stills/food-cocktail.webp" alt="Cocktail menu launch concept — AI-generated" loading="lazy"><span class="cc-badge">STILLS</span></div>
+        <div class="cc-info"><span class="cc-tag">BARS — MENU LAUNCH</span><h3>Smoke &amp; Copper</h3><p>Menu launches that feel like events.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-5" data-cat="realestate" data-cursor="view" tabindex="0"
+        data-kind="image" data-media="media/stills/listing-interior.webp"
+        data-tag="REAL ESTATE — CAROUSEL SET"
+        data-title="Staged to Sell"
+        data-story="Interior story stills sequenced for Instagram carousels — the format agents under-use most. Each listing gets a swipe-through narrative: arrival, hero rooms, detail shots, twilight close."
+        data-deliv="8-slide carousel set · sequenced narrative · caption copy per slide"
+        data-value="Turns one photo shoot into a week of content.">
+        <div class="cc-media"><img src="media/stills/listing-interior.webp" alt="Interior carousel concept — AI-generated" loading="lazy"><span class="cc-badge">CAROUSEL</span></div>
+        <div class="cc-info"><span class="cc-tag">REAL ESTATE — CAROUSEL SET</span><h3>Staged to Sell</h3><p>One listing, a week of swipe-through content.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
+      <article class="case-card span-4" data-cat="hospitality" data-cursor="view" tabindex="0"
+        data-kind="image-vertical" data-media="media/stills/food-pizza.webp"
+        data-tag="RESTAURANTS — SIGNATURE DISH"
+        data-title="Wood-Fired"
+        data-story="Signature-dish hero stills — the anchor image for delivery apps, Google Business profiles, and the top of the feed. The dishes are real; the production is AI. We work from the restaurant&#8217;s own dish photos and disclose the pipeline."
+        data-deliv="Signature-dish hero set · delivery-app + GBP crops · feed-ready edits"
+        data-value="Food photographers quote $300&#8211;$800 per session plus a service disruption.">
+        <div class="cc-media cc-vert"><img src="media/stills/food-pizza.webp" alt="Signature dish hero concept — AI-generated" loading="lazy"><span class="cc-badge">STILLS</span></div>
+        <div class="cc-info"><span class="cc-tag">RESTAURANTS — SIGNATURE DISH</span><h3>Wood-Fired</h3><p>The anchor image for the top of every feed and menu.</p><span class="cc-open">OPEN CASE&nbsp;&#8594;</span></div>
+      </article>
+
     </div>
   </section>
+
+  <!-- CASE LIGHTBOX -->
+  <div class="casebox" id="casebox" aria-hidden="true">
+    <div class="casebox-backdrop" data-cursor="link"></div>
+    <div class="casebox-panel" role="dialog" aria-modal="true" aria-labelledby="cb-title">
+      <button class="casebox-close" id="cb-close" data-cursor="link" aria-label="Close case">&#10005;</button>
+      <div class="cb-media" id="cb-media"></div>
+      <div class="cb-info">
+        <span class="cb-tag" id="cb-tag"></span>
+        <h3 id="cb-title"></h3>
+        <p class="cb-story" id="cb-story"></p>
+        <div class="cb-block"><span class="cb-label">DELIVERABLES</span><p id="cb-deliv"></p></div>
+        <div class="cb-block"><span class="cb-label">WHY IT WINS</span><p id="cb-value"></p></div>
+        <span class="cb-disclosure">AI-GENERATED CONCEPT CAMPAIGN — PRODUCED TO SHOW THE STANDARD. NOT CLIENT WORK.</span>
+        <a class="pill-cta" href="audit.html" data-cursor="link">Start a project like this&nbsp;&#8594;</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ STUDIO — PINNED FILM SCRUB ============ -->
   <section class="film" id="studio" data-zone="ink">
