@@ -97,7 +97,7 @@ document.querySelectorAll(".split-lines").forEach((el) => {
 });
 
 const FADE_TARGETS = [
-  ".kicker", ".section-title", ".gallery-note", ".service-row", ".step",
+  ".kicker", ".section-title", ".gallery-note", ".machine-card", ".step",
   ".price-line", ".pc-head", ".cta-body", ".cta-actions", ".contact-strip",
   ".leak-figure", ".filter-bar", ".stat",
 ];

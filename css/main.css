@@ -188,6 +188,43 @@ body[data-zone="ink"] .nav-cta{background:var(--orange);}
 
 /* ============ SYSTEMS ============ */
 .systems{padding:20vh var(--pad);}
+.machine-card{
+  margin-top:9vh;display:grid;grid-template-columns:1.5fr 1fr;gap:5vw;
+  border:1px solid var(--zone-line);border-radius:20px;padding:56px 52px;
+  position:relative;overflow:hidden;
+  transition:border-color .4s ease,box-shadow .4s ease;
+}
+.machine-card::before{
+  content:"S/01";position:absolute;top:22px;right:28px;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--orange);
+}
+.machine-card:hover{border-color:var(--orange);box-shadow:0 30px 80px rgba(18,20,15,.12);}
+.mc-main h3{
+  font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3.4vw,48px);
+  margin-bottom:18px;line-height:1.05;
+}
+.mc-main>p{font-size:15.5px;line-height:1.75;color:var(--zone-mute);max-width:58ch;}
+.mc-includes{margin-top:30px;list-style:none;display:flex;flex-direction:column;}
+.mc-includes li{
+  display:flex;gap:18px;align-items:baseline;
+  font-size:14.5px;line-height:1.6;color:var(--zone-fg);
+  padding:14px 0;border-top:1px solid var(--zone-line);
+}
+.mc-includes li span{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--orange);flex:none;}
+.mc-side{
+  display:flex;flex-direction:column;gap:10px;justify-content:center;
+  border-left:1px solid var(--zone-line);padding-left:4vw;
+}
+.mc-price{
+  font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3vw,44px);line-height:1.1;
+  font-variant-numeric:tabular-nums;
+}
+.mc-price em{font-style:italic;font-weight:400;font-size:.45em;color:var(--zone-mute);}
+.mc-note{margin:16px 0 22px;font-family:var(--font-mono);font-size:11.5px;line-height:1.8;letter-spacing:.03em;color:var(--zone-mute);}
+@media(max-width:900px){
+  .machine-card{grid-template-columns:1fr;padding:36px 28px;}
+  .mc-side{border-left:none;border-top:1px solid var(--zone-line);padding-left:0;padding-top:28px;}
+}
 .service-rows{margin-top:9vh;border-top:1px solid var(--zone-line);}
 .service-row{
   display:grid;grid-template-columns:110px 1fr 210px;gap:4vw;align-items:center;
